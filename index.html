@@ -1,6 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
-
+<html class="scroll-smooth" lang="en">
 	<head>
 		<meta charset="utf-8">
 		<title>Louisiana Saturday Night</title>
@@ -21,30 +20,208 @@
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Merriweather:wght@300&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;500;600;700&family=Parisienne&display=swap">
 
-		<script src="https://cdn.tailwindcss.com"></script>
+		<link rel="stylesheet" href="main.css">
+
+		<script src="https://kit.fontawesome.com/d594aa6161.js" crossorigin="anonymous"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 	</head>
 
-	<body>
+	<body
+		x-data="{
+			theme: 'light',
+			scrollOffset: window.pageYOffset,
+			width: (window.innerWidth > 0) ? window.innerWidth : screen.width
+		}"
+		@scroll.window="scrollOffset = window.pageYOffset"
+		@resize.window="width = (window.innerWidth > 0) ? window.innerWidth : screen.width"
+	>
+		<nav
+			x-data="{
+				isOpen: false,
+				links: [
+					{ title: 'Our Story', icon: '', anchor: '#story' },
+					{ title: 'Ceremony and Reception', icon: '', anchor: '#schedule' },
+					{ title: 'Things to Do', icon: '', anchor: '#activities' },
+					{ title: 'Accomodations and Travel', icon: '', anchor: '#accomodations' },
+					{ title: 'Registry', icon: '', external: true, anchor: 'https://zola.com/registry/louisianasaturdaynight' },
+					{ title: 'RSVP', icon: '', external: true, cta: true, anchor: 'https://zola.com/wedding/louisianasaturdaynight/rsvp' }
+				]
+			}"
+			class="fixed top-0 w-full backdrop-blur-xl z-10"
+		>
+			<template x-if="width < 960">
+				<div class="flex flex-col">
+					<div class="flex flex-row justify-end content-center">
+						<!-- <button
+							@click="theme = theme == 'light' ? 'dark' : 'light'"
+							class="box-content w-6 h-6 p-4"
+						>
+							<i
+								:class="theme == 'light' ? 'fa-moon' : 'fa-sun'"
+								class="fa-solid fa-xl"
+							></i>
+						</button> -->
+						<button
+							@click="isOpen = !isOpen"
+							class="box-content w-6 h-6 p-4"
+						>
+							<i
+								:class="isOpen ? 'fa-xmark' : 'fa-bars'"
+								class="fa-solid fa-xl"
+							></i>
+						</button>
+					</div>
+					<div x-show="isOpen" x-transition class="flex flex-col content-center">
+						<template x-for="link in links">
+							<a @click="isOpen = false" :href="link.anchor" x-text="link.title" class="my-2 py-2 text-center"></a>
+						</template>
+					</div>
+				</div>
+			</template>
+			<template x-if="width >= 960">
+				<div class="flex flex-row justify-evenly content-center">
+					<template x-for="link in links">
+						<a
+							@click="isOpen = false"
+							:href="link.anchor"
+							x-text="link.title"
+							class="my-2 py-2 px-4 text-center"
+							:class="link.cta ? 'mx-4 rounded font-bold text-white bg-black' : ''"
+						></a>
+					</template>
+				</div>
+			</template>
+		</nav>
+
 		<section
 			id="hero"
-			class="h-screen bg-[url('/img/hero.jpg')] bg-cover bg-right-bottom"
+			class="py-16"
 		>
-			<div class="h-5/6 pt-20 flex flex-col content-center">
-				<h1 class="text-3xl text-center font-['Homemade_Apple']">Antonio Mistretta</h1>
-				<p class="text-base my-4 text-center font-['Merriweather']">&</p>
-				<h1 class="text-3xl text-center font-['Homemade_Apple']">Lizzie Vukovics</h1>
-
-				<span class="text-6xl text-center font-['Merriweather']">~</span>
-
-				<h2 class="text-xl text-center font-['Merriweather']">April 6<span class="text-xs relative bottom-3">th</span>, 2024</h2>
-				<h3 class="text-lg text-center font-['Merriweather']">Baton Rouge, LA</h3>
+			<div class="mx-auto px-6 text-center mb-12">
+				<h1 class="mt-2 font-display text-6xl">Antonio</h1>
+				<p class="font-sans text-xs">and</p>
+				<h1 class="mb-2 font-display text-6xl">Lizzie</h1>
 			</div>
-			<div class="h-1/6 bg-gradient-to-b from-transparent to-white"></div>
+			<div
+				x-data="{ images: ['3F5A3684.jpg','3F5A3861.jpg','3F5A3813.jpg'] }"
+				class="grid grid-cols-3 gap-4"
+			>
+				<template x-for="image in images">
+					<img :src="'img/' + image" />
+				</template>
+			</div>
 		</section>
-		<section id="nav" class="h-screen">
 
+		<section
+			id="story"
+			class="pb-16"
+		>
+			<div class="mx-auto px-6 text-center">
+				<h1 class="my-2 font-serif text-3xl">Our Story</h1>
+			</div>
+			<div class="mx-auto px-6 text-center">
+				<p class="my-4">
+					It was October, the Cardinals were in the playoffs, and St. Louisans had flocked to the hundreds of bars in St. Louis
+					that were showing the Cards game that night. Ed's friend Jeff suggested they go to a bar in the Tower Grove neighborhood
+					to watch the game and meet up with another friend of his. Victoria had plans to watch the game there too, with some
+					friends of hers.
+				</p>
+				<p>
+					As it turns out, Ed's friends and Victoria's friends knew each other, and introduced them. Ed and
+					Victoria seemed to hit it off immediately, in their own awkward way. After getting to know each other over a few hours,
+					Ed was clumsy enough to spill a drink on Victoria, which is her favorite part of the story to tell. By some miracle,
+					Victoria still liked Ed enough to continue hanging out with him and eventually even go on a date with him a few weeks
+					later.
+				</p>
+			</div>
 		</section>
+
+		<section
+			x-data="{
+				events: [
+					{
+						name: 'Ceremony',
+						image: 'olom.jpg',
+						venue: 'Our Lady of Mercy Catholic Church',
+						street: '445 Marquette Ave',
+						city: 'Baton Rouge',
+						state: 'LA',
+						postalCode: '70806',
+						siteLink: 'https://louisianastatemuseum.org/museum/capitol-park-museum',
+						mapLink: 'https://goo.gl/maps/RmnMQ9sBkzHz6Kb17'
+					}, {
+						name: 'Reception',
+						image: 'cpm.jpg',
+						venue: 'Capital Park Museum',
+						street: '660 N. Fourth Street',
+						city: 'Baton Rouge',
+						state: 'LA',
+						postalCode: '70802',
+						siteLink: 'https://louisianastatemuseum.org/museum/capitol-park-museum',
+						mapLink: 'https://goo.gl/maps/RmnMQ9sBkzHz6Kb17'
+					}
+				]
+			}"
+			id="schedule"
+			class="py-16 bg-slate-100"
+		>
+			<div class="mx-auto px-6 text-center">
+				<h1 class="my-2 font-serif text-3xl">Ceremony and Reception</h1>
+			</div>
+			<div class="mx-auto mt-4 px-6 grid grid-cols-1 gap-4">
+				<template x-for="event in events">
+					<div class="overflow-hidden rounded bg-white drop-shadow">
+						<div
+							:class="'bg-[url(\'img/' + event.image + '\')]'"
+							class="bg-cover bg-center"
+						>
+							<h1
+								x-text="event.name"
+								class="pt-24 px-4 pb-4 font-serif text-white text-xl"
+							></h1>
+						</div>
+						<div class="bg-white p-4">
+							<h1
+								x-text="event.venue"
+								class="mb-4 font-serif text-xl"
+							></h1>
+							<p x-text="event.street"></p>
+							<p
+								x-text="event.city + ' ' + event.state + ', ' + event.postalCode"
+								class="mb-8"
+							></p>
+							<a
+								class="rounded py-2 px-4 bg-black text-white uppercase"
+								href="https://goo.gl/maps/RmnMQ9sBkzHz6Kb17"
+							>
+								<i class="mr-2 fa-solid fa-map"></i>
+								Directions
+							</a>
+						</div>
+					</div>
+				</template>
+			</div>
+		</section>
+
+
+
+
+
+
+
+
+
+		<!-- <section id="schedule" class="py-16 px-4 mx-auto prose lg:prose-xl text-center">
+			<h1>Ceremony and Reception</h1>
+			<i class="fa-solid fa-church fa-2xl"></i>
+			
+			<i class="fa-solid fa-building fa-2xl"></i>
+			<h2>Reception</h2>
+			<p>Capitol Park Museum</p>
+			<p>660 N. Fourth Street</p>
+			<p>Baton Rouge, LA 70802</p>
+		</section> -->
 	</body>
 </html>
