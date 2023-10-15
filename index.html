@@ -114,43 +114,36 @@
 						<p>and</p>
 						<h1 class="text-5xl lg:text-7xl">Lizzie</h1>
 						<p>April 6, 2024</p>
+							<a
+								href="https://zola.com/wedding/louisianasaturdaynight/rsvp"
+								class="hidden mt-8 bg-neutral-900 rounded py-2 text-white transition-colors hover:bg-neutral-500 lg:block">
+								RSVP
+							</a>
 					</div>
 
 					<div>
 						<template x-for="(image, index) in images">
-							<img
-								x-transition:enter.duration.500ms
+							<img x-transition:enter.duration.500ms
 								x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
 								x-swipe:right="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
-								x-show="index == activeImageIndex"
-								x-bind:src="'img/' + image"
-								class="w-full max-w-md mx-auto rounded"
-							/>
+								x-show="index == activeImageIndex" x-bind:src="'img/' + image" class="w-full max-w-md mx-auto rounded" />
 						</template>
+						
 						<div class="mt-4 flex flex-row justify-center content-center">
-							<span
-								@click="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
-								class="p-2 mx-2 text-neutral-500 cursor-pointer"
-							>
+							<span @click="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
+								class="p-2 mx-2 text-neutral-500 cursor-pointer">
 								<i class="fa-solid fa-chevron-left fa-xl"></i>
 							</span>
-
+						
 							<template x-for="(image, index) in images">
-								<span
-									@click="activeImageIndex = index"
-									class="p-2 text-neutral-500 cursor-pointer"
-								>
-									<i
-										class="fa-circle fa-md"
-										x-bind:class="index == activeImageIndex ? 'fa-solid' : 'fa-regular text-neutral-300'"
-									></i>
+								<span @click="activeImageIndex = index" class="p-2 text-neutral-500 cursor-pointer">
+									<i class="fa-circle fa-md"
+										x-bind:class="index == activeImageIndex ? 'fa-solid' : 'fa-regular text-neutral-300'"></i>
 								</span>
 							</template>
-
-							<span
-								@click="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
-								class="p-2 mx-2 text-neutral-500 cursor-pointer"
-							>
+						
+							<span @click="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
+								class="p-2 mx-2 text-neutral-500 cursor-pointer">
 								<i class="fa-solid fa-chevron-right fa-xl"></i>
 							</span>
 						</div>
@@ -159,40 +152,19 @@
 			</div>
 		</section>
 
-		<!-- <section
+		<section
 			id="story"
-			class="bg-red-300 py-16 px-6"
+			class="py-16 px-6"
 		>
-			<div class="bg-green-200 max-w-screen-lg mx-auto">
-
-
-				<div class="max-w-screen-sm mx-auto">
-					<h1 class="text-center text-4xl font-[Italiana]">Our Story</h1>
-					<p class="my-6">
-						In the brisk chilly night air of New Orleans at New Year's time Antonio and Lizzie met.
-					</p>
-					<p>
-						Lizzie moved to New Orleans and that was great.
-					</p>
-				</div>
-
-
+			<div class="max-w-screen-lg mx-auto">
+				<h1 class="text-center text-4xl font-[Italiana] text-neutral-700 mb-12">Our Story</h1>
+				<p class="text-center">[INSERT STORY HERE]</p>
 			</div>
-		</section> -->
+		</section>
 
-
-		<!-- <section
-			id="story"
-			class="bg-neutral-100 py-14"
-		>
-			<div class="px-6 font-[Roboto] max-w-xl	mx-auto">
-				
-			</div>
-		</section> -->
-
-		<!-- <section
+		<section
 			id="schedule"
-			class="py-14 max-w-xl mx-auto"
+			class="py-16 px-6 bg-neutral-100"
 			x-data="{
 				events: [
 					{
@@ -223,41 +195,107 @@
 				]
 			}"
 		>
-			<div class="px-6 font-[Roboto]">
-				<h1 class="text-center text-4xl font-[Italiana] mb-6">Itinerary</h1>
-				<div class="grid grid-col-1 gap-y-8">
+			<div class="max-w-screen-lg mx-auto">
+				<h1 class="text-center text-4xl font-[Italiana] text-neutral-700 mb-12">Itinerary</h1>
+				<div class="text-xl text-neutral-700 lg:text-3xl">
+					<p class="text-center">April 6th 2024</p>
 					<template x-for="event in events">
-						<div class="grid grid-cols-4 gap-x-[1px] mb-4 bg-neutral-300">
-							<div class="col-span-1 flex flex-row justify-around bg-white">
-								<div class="flex flex-col justify-center w-full text-center">
-									<i
-										:class="'fa-' + event.icon"
-										class="fa-solid fa-lg py-4"
-									></i>
-									<p x-text="event.time"></p>
+						<div>
+							<div class="w-px mx-auto my-2 bg-neutral-400 h-8"></div>
+							<div class="grid grid-cols-3 gap-4 rounded bg-white overflow-hidden">
+								<div class="col-span-1">
+									<img
+										class="h-full w-full object-cover"
+										x-bind:src="'img/' + event.image"
+									/>
 								</div>
-							</div>
-	
-							<div class="col-span-3 bg-white pl-8">
-								<img
-									class="w-full object-cover rounded mb-4 h-24 sm:h-32"
-									:src="'img/' + event.image"
-								/>
-								<h1
-									x-text="event.name"
-									class="text-2xl"
-								></h1>
-								<p x-text="event.venue"></p>
-								<a :href="event.mapLink" class="underline">
-									<p x-text="event.street"></p>
-									<p x-text="event.city + ' ' + event.state + ', ' + event.postalCode"></p>
-								</a>
+								<div class="col-span-2 py-2">
+									<h1
+										x-text="event.name"
+										class="text-2xl mb-4"
+									></h1>
+									<p 
+										class="text-sm"
+										x-text="event.venue"
+									></p>
+									<a
+										class="text-xs underline"
+										x-bind:href="event.mapLink"
+									>
+										<p x-text="event.street"></p>
+										<p x-text="event.city + ' ' + event.state + ', ' + event.postalCode"></p>
+									</a>
+								</div>
 							</div>
 						</div>
 					</template>
 				</div>
 			</div>
-		</section> -->
+		</section>
+
+		<section
+			id="activities"
+			class="py-16 px-6"
+			x-data="{
+				activities: [
+					{
+						name: 'Tiger Stadium',
+						icon: 'building-columns',
+						image: 'clock.jpg',
+						desc: 'Check out the stately oaks, broad magnolias and azaleas on LSU\'s campus. You can also stop by and say hi to Mike the Tiger.',
+						street: 'War Memorial Tower',
+						city: 'Baton Rouge',
+						state: 'LA',
+						postalCode: '70802'
+					}, {
+						name: 'USS kidd Veterans Museum',
+						icon: 'ship',
+						image: 'ship.jpg',
+						desc: 'We walked by this ship on our first date while exploring the levey of Baton Rouge.',
+						street: '305 South River Road',
+						city: 'Baton Rouge',
+						state: 'LA',
+						postalCode: '70802'
+					}
+				]
+			}"
+		>
+			<div class="max-w-screen-lg mx-auto">
+				<h1 class="text-center text-4xl font-[Italiana] mb-12">Things to Do</h1>
+				<div class="grid grid-col-1 gap-12">
+					<template x-for="activity in activities">
+						<div class="grid grid-cols-3 gap-4">
+							<div class="col-span-3 text-center">
+								<h1
+									class="text-xl text-center"
+									x-text="activity.name"
+								></h1>
+							</div>
+							<div class="col-span-1">
+								<img
+									class="h-full w-full object-cover rounded"
+									x-bind:src="'img/' + activity.image"
+								/>
+							</div>
+							<div class="col-span-2">
+								<p
+									class="mb-4"
+									x-text="activity.desc"
+								></p>
+								<p
+									class="text-xs"
+									x-text="activity.street"
+								></p>
+								<p
+									class="text-xs"
+									x-text="activity.city + ' ' + activity.state + ', ' + activity.postalCode"
+								></p>
+							</div>
+						</div>
+					</template>
+				</div>
+			</div>
+		</section>
 
 		<section class="bg-yellow-100 h-screen"></section>
 	</body>
