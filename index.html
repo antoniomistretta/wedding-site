@@ -14,14 +14,22 @@
 		<meta property="og:image:width" content="1600" />
 		<meta property="og:image:height" content="1067" />
 
+		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+		<link rel="manifest" href="site.webmanifest">
+
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Roboto&display=swap" rel="stylesheet">
+
 		<script src="https://cdn.tailwindcss.com"></script>
 		<script src="https://kit.fontawesome.com/d594aa6161.js" crossorigin="anonymous"></script>
 		<script defer src="https://unpkg.com/alpinejs-swipe"></script>
 		<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
 		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+		<script type="module" src="components.js"></script>
 	</head>
 
 	<body
@@ -32,14 +40,14 @@
 		@scroll.window="scrollOffset = window.pageYOffset"
 		@resize.window="width = (window.innerWidth > 0) ? window.innerWidth : screen.width"
 	>
-		<nav
+		<!-- <nav
 			x-data="{
 				isOpen: false,
 				links: [
-					<!-- { title: 'Our Story', icon: '', anchor: '#story' }, -->
-					<!-- { title: 'Itinerary', icon: '', anchor: '#schedule' }, -->
-					<!-- { title: 'Accomodations and Travel', icon: '', anchor: '#accomodations' }, -->
-					<!-- { title: 'Things to Do', icon: '', anchor: '#activities' }, -->
+					{ title: 'Our Story', icon: '', anchor: '#story' },
+					{ title: 'Itinerary', icon: '', anchor: '#schedule' },
+					{ title: 'Accomodations and Travel', icon: '', anchor: '#accomodations' },
+					{ title: 'Things to Do', icon: '', anchor: '#activities' },
 					{ title: 'Registry', icon: '', external: true, anchor: 'https://zola.com/registry/louisianasaturdaynight' },
 					{ title: 'RSVP', icon: '', external: true, cta: true, anchor: 'https://zola.com/wedding/louisianasaturdaynight/rsvp' }
 				]
@@ -84,84 +92,105 @@
 					</template>
 				</div>
 			</template>
-		</nav>
+		</nav> -->
 
 		<section
 			id="hero"
-			class="pt-16 pb-14 max-w-xl	mx-auto"
-			x-intersect="shown = true"
+			class="py-16 px-6"
 			x-data="{
 				activeImageIndex: 0,
 				images: [
 					'3F5A3861.jpg',
 					'3F5A3684.jpg',
 					'3F5A3813.jpg'
-				],
-				shown: false
+				]
 			}"
 		>
-			<div
-				class="text-center font-[Italiana] text-neutral-700"
-				x-show="shown || scrollOffset > 0"
-				x-transition:enter.duration.1000ms
-			>
-				<p>Celebrating</p>
-				<h1 class="text-5xl">Antonio</h1>
-				<p>and</p>
-				<h1 class="text-5xl">Lizzie</h1>
-				<p>April 6, 2024</p>
-			</div>
-			<div
-				class="mt-12 px-12"
-				x-show="shown || scrollOffset > 0"
-				x-transition:enter.duration.2000ms
-			>
-				<template x-for="(image, index) in images">
-					<img
-						x-transition:enter.duration.500ms
-						class="rounded"
-						x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
-						x-swipe:right="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
-						x-show="index == activeImageIndex"
-						:src="'img/' + image"
-					/>
-				</template>
-				<div class="flex flex-row justify-center content-center mt-8 text-neutral-700">
-					<i
-						@click="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
-						class="fa-solid fa-chevron-left fa-xl py-2 pr-2 text-neutral-500 cursor-pointer"
-					></i>
-					<template x-for="(image, index) in images">
-						<i
-							@click="activeImageIndex = index"
-							class="fa-circle fa-md px-2 cursor-pointer"
-							:class="index == activeImageIndex ? 'fa-solid' : 'fa-regular text-neutral-300'"
-						></i>
-					</template>
-					<i
-						@click="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
-						class="fa-solid fa-chevron-right fa-xl py-2 pl-2 text-neutral-500 cursor-pointer"
-					></i>
+			<div class="max-w-screen-lg mx-auto">
+				<div class="grid grid-cols-1 gap-6 justify-items-center items-center lg:grid-cols-2">
+					<div class="text-center font-[Italiana] text-neutral-700 lg:text-3xl">
+						<p>Celebrating</p>
+						<h1 class="text-5xl lg:text-7xl">Antonio</h1>
+						<p>and</p>
+						<h1 class="text-5xl lg:text-7xl">Lizzie</h1>
+						<p>April 6, 2024</p>
+					</div>
+
+					<div>
+						<template x-for="(image, index) in images">
+							<img
+								x-transition:enter.duration.500ms
+								x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
+								x-swipe:right="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
+								x-show="index == activeImageIndex"
+								x-bind:src="'img/' + image"
+								class="w-full max-w-md mx-auto rounded"
+							/>
+						</template>
+						<div class="mt-4 flex flex-row justify-center content-center">
+							<span
+								@click="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
+								class="p-2 mx-2 text-neutral-500 cursor-pointer"
+							>
+								<i class="fa-solid fa-chevron-left fa-xl"></i>
+							</span>
+
+							<template x-for="(image, index) in images">
+								<span
+									@click="activeImageIndex = index"
+									class="p-2 text-neutral-500 cursor-pointer"
+								>
+									<i
+										class="fa-circle fa-md"
+										x-bind:class="index == activeImageIndex ? 'fa-solid' : 'fa-regular text-neutral-300'"
+									></i>
+								</span>
+							</template>
+
+							<span
+								@click="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
+								class="p-2 mx-2 text-neutral-500 cursor-pointer"
+							>
+								<i class="fa-solid fa-chevron-right fa-xl"></i>
+							</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
 
 		<!-- <section
 			id="story"
-			class="bg-neutral-100 py-14"
+			class="bg-red-300 py-16 px-6"
 		>
-			<div class="px-6 font-[Roboto] max-w-xl	mx-auto">
-				<h1 class="text-center text-4xl font-[Italiana]">Our Story</h1>
-				<p class="my-6">
-					In the brisk chilly night air of New Orleans at New Year's time Antonio and Lizzie met.
-				</p>
-				<p>
-					Lizzie moved to New Orleans and that was great.
-				</p>
+			<div class="bg-green-200 max-w-screen-lg mx-auto">
+
+
+				<div class="max-w-screen-sm mx-auto">
+					<h1 class="text-center text-4xl font-[Italiana]">Our Story</h1>
+					<p class="my-6">
+						In the brisk chilly night air of New Orleans at New Year's time Antonio and Lizzie met.
+					</p>
+					<p>
+						Lizzie moved to New Orleans and that was great.
+					</p>
+				</div>
+
+
 			</div>
 		</section> -->
 
-		<section
+
+		<!-- <section
+			id="story"
+			class="bg-neutral-100 py-14"
+		>
+			<div class="px-6 font-[Roboto] max-w-xl	mx-auto">
+				
+			</div>
+		</section> -->
+
+		<!-- <section
 			id="schedule"
 			class="py-14 max-w-xl mx-auto"
 			x-data="{
@@ -228,6 +257,8 @@
 					</template>
 				</div>
 			</div>
-		</section>
+		</section> -->
+
+		<section class="bg-yellow-100 h-screen"></section>
 	</body>
 </html>
