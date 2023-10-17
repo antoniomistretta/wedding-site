@@ -21,9 +21,9 @@
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Roboto&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Italiana&family=Roboto&display=swap" rel="stylesheet">
 
-		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://cdn.twind.style" crossorigin></script>
 		<script src="https://kit.fontawesome.com/d594aa6161.js" crossorigin="anonymous"></script>
 		<script defer src="https://unpkg.com/alpinejs-swipe"></script>
 		<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
@@ -39,12 +39,13 @@
 		}"
 		@scroll.window="scrollOffset = window.pageYOffset"
 		@resize.window="width = (window.innerWidth > 0) ? window.innerWidth : screen.width"
+		class="font-[Roboto]"
 	>
-		<!-- <nav
+		<nav
 			x-data="{
 				isOpen: false,
 				links: [
-					{ title: 'Our Story', icon: '', anchor: '#story' },
+					<!-- { title: 'Our Story', icon: '', anchor: '#story' }, -->
 					{ title: 'Itinerary', icon: '', anchor: '#schedule' },
 					{ title: 'Accomodations and Travel', icon: '', anchor: '#accomodations' },
 					{ title: 'Things to Do', icon: '', anchor: '#activities' },
@@ -92,7 +93,7 @@
 					</template>
 				</div>
 			</template>
-		</nav> -->
+		</nav>
 
 		<section
 			id="hero"
@@ -108,17 +109,17 @@
 		>
 			<div class="max-w-screen-lg mx-auto">
 				<div class="grid grid-cols-1 gap-6 justify-items-center items-center lg:grid-cols-2">
-					<div class="text-center font-[Italiana] text-neutral-700 lg:text-3xl">
+					<div class="text-center font-[Italiana] text-2xl lg:text-4xl">
 						<p>Celebrating</p>
-						<h1 class="text-5xl lg:text-7xl">Antonio</h1>
+						<h1 class="font-['Homemade_Apple'] text-5xl mt-5 lg:text-7xl">Antonio</h1>
 						<p>and</p>
-						<h1 class="text-5xl lg:text-7xl">Lizzie</h1>
+						<h1 class="font-['Homemade_Apple'] text-5xl mb-5 lg:text-7xl">Lizzie</h1>
 						<p>April 6, 2024</p>
-							<a
-								href="https://zola.com/wedding/louisianasaturdaynight/rsvp"
-								class="hidden mt-8 bg-neutral-900 rounded py-2 text-white transition-colors hover:bg-neutral-500 lg:block">
-								RSVP
-							</a>
+
+						<a
+							href="https://zola.com/wedding/louisianasaturdaynight/rsvp"
+							class="hidden mt-8 bg-neutral-900 rounded py-2 text-white transition-colors hover:bg-neutral-500 lg:block"
+						>RSVP</a>
 					</div>
 
 					<div>
@@ -128,22 +129,22 @@
 								x-swipe:right="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
 								x-show="index == activeImageIndex" x-bind:src="'img/' + image" class="w-full max-w-md mx-auto rounded" />
 						</template>
-						
+
 						<div class="mt-4 flex flex-row justify-center content-center">
 							<span @click="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
-								class="p-2 mx-2 text-neutral-500 cursor-pointer">
+								class="p-2 mx-2 cursor-pointer">
 								<i class="fa-solid fa-chevron-left fa-xl"></i>
 							</span>
-						
+
 							<template x-for="(image, index) in images">
-								<span @click="activeImageIndex = index" class="p-2 text-neutral-500 cursor-pointer">
+								<span @click="activeImageIndex = index" class="p-2 cursor-pointer">
 									<i class="fa-circle fa-md"
-										x-bind:class="index == activeImageIndex ? 'fa-solid' : 'fa-regular text-neutral-300'"></i>
+										x-bind:class="index == activeImageIndex ? 'fa-solid' : 'fa-regular'"></i>
 								</span>
 							</template>
-						
+
 							<span @click="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
-								class="p-2 mx-2 text-neutral-500 cursor-pointer">
+								class="p-2 mx-2 cursor-pointer">
 								<i class="fa-solid fa-chevron-right fa-xl"></i>
 							</span>
 						</div>
@@ -152,6 +153,7 @@
 			</div>
 		</section>
 
+		<!--
 		<section
 			id="story"
 			class="py-16 px-6"
@@ -161,6 +163,7 @@
 				<p class="text-center">[INSERT STORY HERE]</p>
 			</div>
 		</section>
+		-->
 
 		<section
 			id="schedule"
@@ -172,7 +175,7 @@
 						image: 'olom.jpg',
 						icon: 'church',
 						venue: 'Our Lady of Mercy Catholic Church',
-						time: '1:00pm',
+						time: '1:30pm',
 						street: '445 Marquette Ave',
 						city: 'Baton Rouge',
 						state: 'LA',
@@ -180,7 +183,7 @@
 						siteLink: 'https://louisianastatemuseum.org/museum/capitol-park-museum',
 						mapLink: 'https://goo.gl/maps/RmnMQ9sBkzHz6Kb17'
 					}, {
-						name: 'Evening Reception',
+						name: 'Reception',
 						image: 'cpm.jpg',
 						icon: 'building-columns',
 						venue: 'Capital Park Museum',
@@ -196,46 +199,55 @@
 			}"
 		>
 			<div class="max-w-screen-lg mx-auto">
-				<h1 class="text-center text-4xl font-[Italiana] text-neutral-700 mb-12">Itinerary</h1>
+				<h1 class="text-center text-4xl font-[Italiana] text-neutral-700 mb-12 lg:text-6xl">Itinerary</h1>
 				<div class="text-xl text-neutral-700 lg:text-3xl">
-					<p class="text-center">April 6th 2024</p>
-					<template x-for="event in events">
-						<div>
-							<div class="w-px mx-auto my-2 bg-neutral-400 h-8"></div>
-							<div class="grid grid-cols-3 gap-4 rounded bg-white overflow-hidden">
-								<div class="col-span-1">
-									<img
-										class="h-full w-full object-cover"
-										x-bind:src="'img/' + event.image"
-									/>
-								</div>
-								<div class="col-span-2 py-2">
-									<h1
-										x-text="event.name"
-										class="text-2xl mb-4"
-									></h1>
-									<p 
-										class="text-sm"
-										x-text="event.venue"
-									></p>
-									<a
-										class="text-xs underline"
-										x-bind:href="event.mapLink"
-									>
-										<p x-text="event.street"></p>
-										<p x-text="event.city + ' ' + event.state + ', ' + event.postalCode"></p>
-									</a>
-								</div>
-							</div>
+					<template x-for="(event, index) in events">
+						<div class="text-center">
+							<div
+								x-show="index > 0"
+								class="w-px mx-auto my-6 bg-neutral-400 h-16"
+							></div>
+
+							<p
+								x-text="'April 6th 2024, ' + event.time"
+								class="text-sm"
+							></p>
+							<h1
+								x-text="event.name"
+								class="text-3xl my-4"
+							></h1>
+							<p
+								class="text-sm"
+								x-text="event.venue"
+							></p>
+							<a
+								class="text-xs underline whitespace-pre"
+								x-bind:href="event.mapLink"
+								x-text="`${event.street}\n${event.city} ${event.state}, ${event.postalCode}`"
+							></a>
 						</div>
 					</template>
+
+					<a
+						href="https://zola.com/wedding/louisianasaturdaynight/rsvp"
+					><h1 class="text-center w-64 mx-auto mt-8 bg-neutral-900 rounded py-2 text-lg text-white transition-colors hover:bg-neutral-500">RSVP</h1></a>
 				</div>
 			</div>
 		</section>
 
 		<section
-			id="activities"
+			id="accomodations"
 			class="py-16 px-6"
+		>
+			<div class="max-w-screen-lg mx-auto">
+				<h1 class="text-center text-4xl font-[Italiana] text-neutral-700 mb-12">Accomodations and Travel</h1>
+				<p class="text-center text-neutral-400">coming soon</p>
+			</div>
+		</section>
+
+		<section
+			id="activities"
+			class="py-16 px-6 bg-neutral-100"
 			x-data="{
 				activities: [
 					{
@@ -262,7 +274,8 @@
 		>
 			<div class="max-w-screen-lg mx-auto">
 				<h1 class="text-center text-4xl font-[Italiana] mb-12">Things to Do</h1>
-				<div class="grid grid-col-1 gap-12">
+				<p class="text-center text-neutral-400">coming soon</p>
+				<!-- <div class="grid grid-col-1 gap-12">
 					<template x-for="activity in activities">
 						<div class="grid grid-cols-3 gap-4">
 							<div class="col-span-3 text-center">
@@ -293,10 +306,8 @@
 							</div>
 						</div>
 					</template>
-				</div>
+				</div> -->
 			</div>
 		</section>
-
-		<section class="bg-yellow-100 h-screen"></section>
 	</body>
 </html>
