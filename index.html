@@ -14,14 +14,22 @@
 		<meta property="og:image:width" content="1600" />
 		<meta property="og:image:height" content="1067" />
 
+		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+		<link rel="manifest" href="site.webmanifest">
+
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Roboto&display=swap" rel="stylesheet">
-		<script src="https://cdn.tailwindcss.com"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Italiana&family=Roboto&display=swap" rel="stylesheet">
+
+		<script src="https://cdn.twind.style" crossorigin></script>
 		<script src="https://kit.fontawesome.com/d594aa6161.js" crossorigin="anonymous"></script>
 		<script defer src="https://unpkg.com/alpinejs-swipe"></script>
 		<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
 		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+		<script type="module" src="components.js"></script>
 	</head>
 
 	<body
@@ -31,15 +39,16 @@
 		}"
 		@scroll.window="scrollOffset = window.pageYOffset"
 		@resize.window="width = (window.innerWidth > 0) ? window.innerWidth : screen.width"
+		class="font-[Roboto]"
 	>
 		<nav
 			x-data="{
 				isOpen: false,
 				links: [
 					<!-- { title: 'Our Story', icon: '', anchor: '#story' }, -->
-					<!-- { title: 'Itinerary', icon: '', anchor: '#schedule' }, -->
-					<!-- { title: 'Accomodations and Travel', icon: '', anchor: '#accomodations' }, -->
-					<!-- { title: 'Things to Do', icon: '', anchor: '#activities' }, -->
+					{ title: 'Itinerary', icon: '', anchor: '#schedule' },
+					{ title: 'Accomodations and Travel', icon: '', anchor: '#accomodations' },
+					{ title: 'Things to Do', icon: '', anchor: '#activities' },
 					{ title: 'Registry', icon: '', external: true, anchor: 'https://zola.com/registry/louisianasaturdaynight' },
 					{ title: 'RSVP', icon: '', external: true, cta: true, anchor: 'https://zola.com/wedding/louisianasaturdaynight/rsvp' }
 				]
@@ -88,82 +97,77 @@
 
 		<section
 			id="hero"
-			class="pt-16 pb-14 max-w-xl	mx-auto"
-			x-intersect="shown = true"
+			class="py-16 px-6"
 			x-data="{
 				activeImageIndex: 0,
 				images: [
 					'3F5A3861.jpg',
 					'3F5A3684.jpg',
 					'3F5A3813.jpg'
-				],
-				shown: false
+				]
 			}"
 		>
-			<div
-				class="text-center font-[Italiana] text-neutral-700"
-				x-show="shown || scrollOffset > 0"
-				x-transition:enter.duration.1000ms
-			>
-				<p>Celebrating</p>
-				<h1 class="text-5xl">Antonio</h1>
-				<p>and</p>
-				<h1 class="text-5xl">Lizzie</h1>
-				<p>April 6, 2024</p>
-			</div>
-			<div
-				class="mt-12 px-12"
-				x-show="shown || scrollOffset > 0"
-				x-transition:enter.duration.2000ms
-			>
-				<template x-for="(image, index) in images">
-					<img
-						x-transition:enter.duration.500ms
-						class="rounded"
-						x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
-						x-swipe:right="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
-						x-show="index == activeImageIndex"
-						:src="'img/' + image"
-					/>
-				</template>
-				<div class="flex flex-row justify-center content-center mt-8 text-neutral-700">
-					<i
-						@click="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
-						class="fa-solid fa-chevron-left fa-xl py-2 pr-2 text-neutral-500 cursor-pointer"
-					></i>
-					<template x-for="(image, index) in images">
-						<i
-							@click="activeImageIndex = index"
-							class="fa-circle fa-md px-2 cursor-pointer"
-							:class="index == activeImageIndex ? 'fa-solid' : 'fa-regular text-neutral-300'"
-						></i>
-					</template>
-					<i
-						@click="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
-						class="fa-solid fa-chevron-right fa-xl py-2 pl-2 text-neutral-500 cursor-pointer"
-					></i>
+			<div class="max-w-screen-lg mx-auto">
+				<div class="grid grid-cols-1 gap-6 justify-items-center items-center lg:grid-cols-2">
+					<div class="text-center font-[Italiana] text-2xl lg:text-4xl">
+						<p>Celebrating</p>
+						<h1 class="font-['Homemade_Apple'] text-5xl mt-5 lg:text-7xl">Antonio</h1>
+						<p>and</p>
+						<h1 class="font-['Homemade_Apple'] text-5xl mb-5 lg:text-7xl">Lizzie</h1>
+						<p>April 6, 2024</p>
+
+						<a
+							href="https://zola.com/wedding/louisianasaturdaynight/rsvp"
+							class="hidden mt-8 bg-neutral-900 rounded py-2 text-white transition-colors hover:bg-neutral-500 lg:block"
+						>RSVP</a>
+					</div>
+
+					<div>
+						<template x-for="(image, index) in images">
+							<img x-transition:enter.duration.500ms
+								x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
+								x-swipe:right="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
+								x-show="index == activeImageIndex" x-bind:src="'img/' + image" class="w-full max-w-md mx-auto rounded" />
+						</template>
+
+						<div class="mt-4 flex flex-row justify-center content-center">
+							<span @click="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
+								class="p-2 mx-2 cursor-pointer">
+								<i class="fa-solid fa-chevron-left fa-xl"></i>
+							</span>
+
+							<template x-for="(image, index) in images">
+								<span @click="activeImageIndex = index" class="p-2 cursor-pointer">
+									<i class="fa-circle fa-md"
+										x-bind:class="index == activeImageIndex ? 'fa-solid' : 'fa-regular'"></i>
+								</span>
+							</template>
+
+							<span @click="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
+								class="p-2 mx-2 cursor-pointer">
+								<i class="fa-solid fa-chevron-right fa-xl"></i>
+							</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- <section
+		<!--
+		<section
 			id="story"
-			class="bg-neutral-100 py-14"
+			class="py-16 px-6"
 		>
-			<div class="px-6 font-[Roboto] max-w-xl	mx-auto">
-				<h1 class="text-center text-4xl font-[Italiana]">Our Story</h1>
-				<p class="my-6">
-					In the brisk chilly night air of New Orleans at New Year's time Antonio and Lizzie met.
-				</p>
-				<p>
-					Lizzie moved to New Orleans and that was great.
-				</p>
+			<div class="max-w-screen-lg mx-auto">
+				<h1 class="text-center text-4xl font-[Italiana] text-neutral-700 mb-12">Our Story</h1>
+				<p class="text-center">[INSERT STORY HERE]</p>
 			</div>
-		</section> -->
+		</section>
+		-->
 
 		<section
 			id="schedule"
-			class="py-14 max-w-xl mx-auto"
+			class="py-16 px-6 bg-neutral-100"
 			x-data="{
 				events: [
 					{
@@ -171,7 +175,7 @@
 						image: 'olom.jpg',
 						icon: 'church',
 						venue: 'Our Lady of Mercy Catholic Church',
-						time: '1:00pm',
+						time: '1:30pm',
 						street: '445 Marquette Ave',
 						city: 'Baton Rouge',
 						state: 'LA',
@@ -179,7 +183,7 @@
 						siteLink: 'https://louisianastatemuseum.org/museum/capitol-park-museum',
 						mapLink: 'https://goo.gl/maps/RmnMQ9sBkzHz6Kb17'
 					}, {
-						name: 'Evening Reception',
+						name: 'Reception',
 						image: 'cpm.jpg',
 						icon: 'building-columns',
 						venue: 'Capital Park Museum',
@@ -194,39 +198,115 @@
 				]
 			}"
 		>
-			<div class="px-6 font-[Roboto]">
-				<h1 class="text-center text-4xl font-[Italiana] mb-6">Itinerary</h1>
-				<div class="grid grid-col-1 gap-y-8">
-					<template x-for="event in events">
-						<div class="grid grid-cols-4 gap-x-[1px] mb-4 bg-neutral-300">
-							<div class="col-span-1 flex flex-row justify-around bg-white">
-								<div class="flex flex-col justify-center w-full text-center">
-									<i
-										:class="'fa-' + event.icon"
-										class="fa-solid fa-lg py-4"
-									></i>
-									<p x-text="event.time"></p>
-								</div>
-							</div>
-	
-							<div class="col-span-3 bg-white pl-8">
-								<img
-									class="w-full object-cover rounded mb-4 h-24 sm:h-32"
-									:src="'img/' + event.image"
-								/>
+			<div class="max-w-screen-lg mx-auto">
+				<h1 class="text-center text-4xl font-[Italiana] text-neutral-700 mb-12 lg:text-6xl">Itinerary</h1>
+				<div class="text-xl text-neutral-700 lg:text-3xl">
+					<template x-for="(event, index) in events">
+						<div class="text-center">
+							<div
+								x-show="index > 0"
+								class="w-px mx-auto my-6 bg-neutral-400 h-16"
+							></div>
+
+							<p
+								x-text="'April 6th 2024, ' + event.time"
+								class="text-sm"
+							></p>
+							<h1
+								x-text="event.name"
+								class="text-3xl my-4"
+							></h1>
+							<p
+								class="text-sm"
+								x-text="event.venue"
+							></p>
+							<a
+								class="text-xs underline whitespace-pre"
+								x-bind:href="event.mapLink"
+								x-text="`${event.street}\n${event.city} ${event.state}, ${event.postalCode}`"
+							></a>
+						</div>
+					</template>
+
+					<a
+						href="https://zola.com/wedding/louisianasaturdaynight/rsvp"
+					><h1 class="text-center w-64 mx-auto mt-8 bg-neutral-900 rounded py-2 text-lg text-white transition-colors hover:bg-neutral-500">RSVP</h1></a>
+				</div>
+			</div>
+		</section>
+
+		<section
+			id="accomodations"
+			class="py-16 px-6"
+		>
+			<div class="max-w-screen-lg mx-auto">
+				<h1 class="text-center text-4xl font-[Italiana] text-neutral-700 mb-12">Accomodations and Travel</h1>
+				<p class="text-center text-neutral-400">coming soon</p>
+			</div>
+		</section>
+
+		<section
+			id="activities"
+			class="py-16 px-6 bg-neutral-100"
+			x-data="{
+				activities: [
+					{
+						name: 'Tiger Stadium',
+						icon: 'building-columns',
+						image: 'clock.jpg',
+						desc: 'Check out the stately oaks, broad magnolias and azaleas on LSU\'s campus. You can also stop by and say hi to Mike the Tiger.',
+						street: 'War Memorial Tower',
+						city: 'Baton Rouge',
+						state: 'LA',
+						postalCode: '70802'
+					}, {
+						name: 'USS kidd Veterans Museum',
+						icon: 'ship',
+						image: 'ship.jpg',
+						desc: 'We walked by this ship on our first date while exploring the levey of Baton Rouge.',
+						street: '305 South River Road',
+						city: 'Baton Rouge',
+						state: 'LA',
+						postalCode: '70802'
+					}
+				]
+			}"
+		>
+			<div class="max-w-screen-lg mx-auto">
+				<h1 class="text-center text-4xl font-[Italiana] mb-12">Things to Do</h1>
+				<p class="text-center text-neutral-400">coming soon</p>
+				<!-- <div class="grid grid-col-1 gap-12">
+					<template x-for="activity in activities">
+						<div class="grid grid-cols-3 gap-4">
+							<div class="col-span-3 text-center">
 								<h1
-									x-text="event.name"
-									class="text-2xl"
+									class="text-xl text-center"
+									x-text="activity.name"
 								></h1>
-								<p x-text="event.venue"></p>
-								<a :href="event.mapLink" class="underline">
-									<p x-text="event.street"></p>
-									<p x-text="event.city + ' ' + event.state + ', ' + event.postalCode"></p>
-								</a>
+							</div>
+							<div class="col-span-1">
+								<img
+									class="h-full w-full object-cover rounded"
+									x-bind:src="'img/' + activity.image"
+								/>
+							</div>
+							<div class="col-span-2">
+								<p
+									class="mb-4"
+									x-text="activity.desc"
+								></p>
+								<p
+									class="text-xs"
+									x-text="activity.street"
+								></p>
+								<p
+									class="text-xs"
+									x-text="activity.city + ' ' + activity.state + ', ' + activity.postalCode"
+								></p>
 							</div>
 						</div>
 					</template>
-				</div>
+				</div> -->
 			</div>
 		</section>
 	</body>
