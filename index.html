@@ -14,22 +14,16 @@
 		<meta property="og:image:width" content="1600" />
 		<meta property="og:image:height" content="1067" />
 
-		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-		<link rel="manifest" href="site.webmanifest">
-
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Italiana&family=Roboto&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Open+Sans&family=WindSong&display=swap" rel="stylesheet">
 
-		<script src="https://cdn.twind.style" crossorigin></script>
 		<script src="https://kit.fontawesome.com/d594aa6161.js" crossorigin="anonymous"></script>
 		<script defer src="https://unpkg.com/alpinejs-swipe"></script>
 		<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
 		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-		<script type="module" src="components.js"></script>
+		<link href="styles.css" rel="stylesheet">
 	</head>
 
 	<body
@@ -39,13 +33,13 @@
 		}"
 		@scroll.window="scrollOffset = window.pageYOffset"
 		@resize.window="width = (window.innerWidth > 0) ? window.innerWidth : screen.width"
-		class="font-[Roboto]"
+		class="bg-neutral-100 text-neutral-900 font-[Italiana]"
 	>
 		<nav
 			x-data="{
 				isOpen: false,
 				links: [
-					<!-- { title: 'Our Story', icon: '', anchor: '#story' }, -->
+					{ title: 'Our Story', icon: '', anchor: '#story' },
 					{ title: 'Itinerary', icon: '', anchor: '#schedule' },
 					{ title: 'Accomodations and Travel', icon: '', anchor: '#accomodations' },
 					{ title: 'Things to Do', icon: '', anchor: '#activities' },
@@ -53,70 +47,60 @@
 					{ title: 'RSVP', icon: '', external: true, cta: true, anchor: 'https://zola.com/wedding/louisianasaturdaynight/rsvp' }
 				]
 			}"
-			class="fixed top-0 w-full backdrop-blur-xl z-10"
 		>
-			<template x-if="width < 960">
-				<div class="flex flex-col">
-					<div class="flex flex-row justify-end content-center">
-						<button
-							@click="isOpen = !isOpen"
-							class="box-content w-6 h-6 p-4"
-						>
-							<i
-								:class="isOpen ? 'fa-xmark' : 'fa-bars'"
-								class="fa-solid fa-xl"
-							></i>
-						</button>
-					</div>
-					<div x-show="isOpen" x-transition:enter.duration.500ms class="flex flex-col content-center pb-4">
-						<template x-for="link in links">
-							<a
-								@click="isOpen = false"
-								:href="link.anchor"
-								x-text="link.title"
-								class="my-2 py-2 text-center font-bold"
-						></a>
-						</template>
-					</div>
-				</div>
-			</template>
-			<template x-if="width >= 960">
-				<div class="flex flex-row justify-evenly content-center">
-					<template x-for="link in links">
+			<button
+				@click="isOpen = !isOpen"
+				type="button"
+				class="fixed top-2 right-2 z-20 box-content w-6 h-6 p-4 bg-neutral-900 rounded"
+			>
+				<i
+					x-show="isOpen"
+					x-transition:enter.duration.250ms
+					class="fa-xmark fa-solid fa-xl text-white"
+				></i>
+				<i
+					x-show="!isOpen"
+					x-transition:enter.duration.250ms
+					class="fa-bars fa-solid fa-xl text-white"
+				></i>
+			</button>
+
+			<div
+				x-show="isOpen"
+				x-transition:enter.duration.250ms
+				x-transition:leave.duration.250ms
+				class="fixed bg-white/50 w-screen h-screen z-10 backdrop-blur-lg py-16 flex flex-col justify-around"
+			>
+				<template x-for="link in links">
+					<span class="text-center">
 						<a
 							@click="isOpen = false"
-							:href="link.anchor"
-							x-text="link.title"
-							class="my-2 py-2 px-4 text-center"
-							:class="link.cta ? 'mx-4 rounded font-bold text-white bg-black' : ''"
-						></a>
-					</template>
-				</div>
-			</template>
+							x-html="link.title"
+							x-bind:href="link.anchor"
+							class="text-4xl py-8 text-center hover:underline"
+						>
+
+						</a>
+						<i
+							x-show="link.external"
+							class="relative bottom-4 fa-external-link fa-solid"
+						></i>
+					</span>
+				</template>
+			</div>
 		</nav>
 
-		<section
+		<header
 			id="hero"
 			class="py-16 px-6"
-			x-data="{
-				activeImageIndex: 0,
-				images: [
-					'3F5A3861.jpg',
-					'3F5A3684.jpg',
-					'3F5A3813.jpg',
-					'3F5A4049.jpg',
-					'3F5A4249.jpg',
-					'8A6A3249.jpg'
-				]
-			}"
 		>
-			<div class="max-w-screen-lg mx-auto">
+			<div class="max-w-screen-md mx-auto">
 				<div class="grid grid-cols-1 gap-6 justify-items-center items-center lg:grid-cols-2">
-					<div class="text-center font-[Italiana] text-2xl lg:text-4xl">
+					<div class="text-center font-[Italiana] text-2xl relative z-0 lg:text-4xl">
 						<p>Celebrating</p>
-						<h1 class="font-['Homemade_Apple'] text-5xl mt-5 lg:text-7xl">Antonio</h1>
+						<h1 class="font-['WindSong'] text-7xl mt-5 relative right-4 lg:text-7xl">Antonio</h1>
 						<p>and</p>
-						<h1 class="font-['Homemade_Apple'] text-5xl mb-5 lg:text-7xl">Lizzie</h1>
+						<h1 class="font-['WindSong'] text-7xl mb-5 relative right-4 lg:text-7xl">Lizzie</h1>
 						<p>April 6, 2024</p>
 
 						<a
@@ -125,12 +109,27 @@
 						>RSVP</a>
 					</div>
 
-					<div>
+					<div
+						x-data="{
+							activeImageIndex: 0,
+							images: [
+								'3F5A4049.jpg',
+								'3F5A3861.jpg',
+								'3F5A3684.jpg',
+								'3F5A3813.jpg',
+								'3F5A4249.jpg',
+								'8A6A3249.jpg'
+							]
+						}"
+					>
 						<template x-for="(image, index) in images">
-							<img x-transition:enter.duration.500ms
+							<img
+								x-transition:enter.duration.500ms
 								x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
 								x-swipe:right="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
-								x-show="index == activeImageIndex" x-bind:src="'img/' + image" class="w-full max-w-md mx-auto rounded" />
+								x-show="index == activeImageIndex" x-bind:src="'img/' + image"
+								class="w-full max-w-md mx-auto rounded"
+							/>
 						</template>
 
 						<div class="mt-4 flex flex-row justify-center content-center">
@@ -154,19 +153,83 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</header>
 
-		<!--
 		<section
 			id="story"
-			class="py-16 px-6"
+			class="py-16 px-6 bg-neutral-200"
 		>
-			<div class="max-w-screen-lg mx-auto">
-				<h1 class="text-center text-4xl font-[Italiana] text-neutral-700 mb-12">Our Story</h1>
-				<p class="text-center">[INSERT STORY HERE]</p>
+			<div
+				x-data="{ selectedStoryIndex: 0 }"
+				class="max-w-screen-md mx-auto font-['Open_Sans']"
+			>
+				<h1
+					x-text="(selectedStoryIndex == 0 ? 'Lizzie' : selectedStoryIndex == 1 ? 'Antonio' : 'ChatGPT') + '\'s Story'"
+					class="text-center text-4xl text-neutral-700 mb-12 font-[Italiana]"
+				></h1>
+				<div class="flex flex-row justify-between mb-12">
+					<button
+						@click="selectedStoryIndex = 0"
+						:class="selectedStoryIndex == 0 ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-900'"
+						class="rounded-l-full border-2 border-neutral-900 py-2 px-4 grow"
+						type="button"
+					>Lizzie</button>
+					<button
+						@click="selectedStoryIndex = 1"
+						:class="selectedStoryIndex == 1 ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-900'"
+						class="border-2 border-x-0 border-neutral-900 py-2 px-4 grow"
+						type="button"
+					>Antonio</button>
+					<button
+						@click="selectedStoryIndex = 2"
+						:class="selectedStoryIndex == 2 ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-900'"
+						class="rounded-r-full border-2 border-neutral-900 py-2 px-4 grow"
+						type="button"
+					>ChatGPT</button>
+				</div>
+				<article x-show="selectedStoryIndex == 0" x-transition:enter.duration.500ms class="mx-auto max-w-screen-md">
+					<p class="mb-4 indent-8">
+						Antonio and I first met at the very end of December, 2021. We were both in the wedding of our good friends,Madeleine and Ben Heyob. After briefly chatting at the rehearsal dinner, we really got to know each other whenAntonio asked me to dance at the reception. I was instantly attracted to Antonio and enjoyed dancing with him. Ithought he was handsome, clever, and funny. We talked all evening, and Antonio invited me to his New Year'sparty the next day. After enjoying Antonio's jambalaya, we walked to Bayou St. John to see the fireworks.Antonio and I stayed up late as we walked along the bayou, talking as though we'd known each other a long time.
+					</p>
+					<p class="mb-4 indent-8">
+						In the new year I drove back to Houston, where I was living and teaching world history at Cristo Rey Jesuit HighSchool. As I was driving, I thought that meeting Antonio was fun and romantic, but that the relationshipwouldn't go anywhere because he lived in New Orleans, and I was in Houston. However, Antonio surprised me bycalling as I drove home and kept me company for the five hour drive. After that, Antonio just kept calling, andwe continued to get to know each other through facetime dates. We visited each other multiple times. In NewOrleans we went to Mardi Gras and biked through Audubon Park. In Houston, we visited NASA and Antonio met mycats, Gilbert and Lewis, who he loved right away. Antonio loves my cats so much that he has been getting allergy shots for about a year.
+					</p>
+					<p class="indent-8">
+						Towards the end of April, I made the decision to move from Houston to New Orleans. It was difficult to leave the school I loved, but there was a new adventure awaiting back home in Louisiana. After I moved to New Orleans, Antonio and I continued to grow in love, grounded in our Catholic faith. About a year later, he proposed on the bridge where we first watched fireworks together on New Year's Eve. It was the perfect beginning to the rest of our lives.
+					</p>
+				</article>
+				<article
+					x-show="selectedStoryIndex == 1"
+					x-transition:enter.duration.500ms
+					class="mx-auto max-w-screen-md"
+				>
+					<p class="mb-4 indent-8">
+						It was close to the end of 2021, and we were both attending the wedding and ceremonies of our mutual friends, Ben and Madeleine. In a few words, our connection was instant, but in a few more it was incredibly easy and enjoyable to speak with each other. On the dance floor we shared our first moments of fun as we chatted the night away. The next day, New Year's Eve, was where we grew even closer as we walked arm-in-arm and watched the fireworks of a fresh start over a bridge across Bayou St. John.
+					</p>
+					<p class="mb-4 indent-8">
+						I was interested right away; however, Lizzie doubted this would become anything serious given the geographical distance. With much persistence and many phone calls, we continued to see each other when circumstances aligned or otherwise.
+					</p>
+					<p class="indent-8">
+						What followed was a deepening relationship that eventually blossomed into an engagement that happened on the very same bridge that we first watched the fireworks.
+					</p>
+				</article>
+				<article
+					x-show="selectedStoryIndex == 2"
+					x-transition:enter.duration.500ms
+					class="mx-auto max-w-screen-md"
+				>
+					<p class="mb-4 indent-8">
+						In the enchanting tapestry of their love story, Lizzie and Antonio first crossed paths at the celebration of their dear friends Ben and Madeleine's union. The magic unfolded at their wedding, where fleeting glances at the rehearsal dinner bloomed into a dance at the reception and a profound conversation at the after-party. Lizzie, captivated by Antonio's nerdy charm and bespectacled allure, found herself intrigued. Meanwhile, Antonio was drawn to her quiet, soft-spoken demeanor, only to be enamored by her distinctive style and vibrant personality.
+					</p>
+					<p class="mb-4 indent-8">
+						One cherished memory illuminates their journey — welcoming a new year together, they lingered for hours after the fireworks, their connection deepening in the quiet moments of the night. Their shared faith has been a steady beacon, anchoring them through the highs and lows. The harmony of their relationship stems from embracing their differences — her Southern upbringing intertwining with his East Coast roots, creating a unique blend of love and understanding. We discovered that in complementing each other's weaknesses, we unearthed the strength of unity.
+					</p>
+					<p class="indent-8">
+						And so, on the very bridge where their story commenced, the same bridge that cradled their first New Year's together under the city lights, Antonio knelt and asked Lizzie to be his forever. In that moment, with the echoes of laughter and whispers from that cherished night, their journey towards a lifetime together found its beautiful beginning.
+					</p>
+				</article>
 			</div>
 		</section>
-		-->
 
 		<section
 			id="schedule"
@@ -201,9 +264,9 @@
 				]
 			}"
 		>
-			<div class="max-w-screen-lg mx-auto">
-				<h1 class="text-center text-4xl font-[Italiana] text-neutral-700 mb-12 lg:text-6xl">Itinerary</h1>
-				<div class="text-xl text-neutral-700 lg:text-3xl">
+			<div class="max-w-screen-md mx-auto">
+				<h1 class="text-center text-4xl font-[Italiana] text-neutral-700 mb-12">Itinerary</h1>
+				<div class="text-xl text-neutral-700 font-['Open_Sans'] lg:text-3xl">
 					<template x-for="(event, index) in events">
 						<div class="text-center">
 							<div
@@ -217,8 +280,12 @@
 							></p>
 							<h1
 								x-text="event.name"
-								class="text-3xl my-4"
+								class="text-3xl mt-4 font-[Italiana]"
 							></h1>
+							<img
+								:src="'img/' + event.image"
+								class="w-full h-32 rounded object-cover my-4"
+							/>
 							<p
 								class="text-sm"
 								x-text="event.venue"
@@ -240,17 +307,37 @@
 
 		<section
 			id="accomodations"
-			class="py-16 px-6"
+			class="py-16 px-6 bg-neutral-200"
 		>
-			<div class="max-w-screen-lg mx-auto">
-				<h1 class="text-center text-4xl font-[Italiana] text-neutral-700 mb-12">Accomodations and Travel</h1>
-				<p class="text-center text-neutral-400">coming soon</p>
+			<div class="max-w-screen-md mx-auto font-['Open_Sans']">
+				<h1 class="text-center text-4xl font-[Italiana] text-neutral-700 mb-12">Travel and Accomodations</h1>
+
+				<h2 class="text-center text-2xl font-[Italiana] text-neutral-700 mb-4">Flying</h2>
+				<p class="indent-8 mb-8">
+					We recommend flying into the Baton Rouge airport (BTR). There are very few direct flights, but connections are mostly from cities like Dallas, Washionton D.C., Houston, and Atlanta. You could also fly into New Orleans (MSY), but it is at least an hour drive from New Orleans to Baton Rouge.
+				</p>
+
+				<h2 class="text-center text-2xl font-[Italiana] text-neutral-700 mb-4">Driving</h2>
+				<p class="indent-8 mb-8">
+					We recommend renting a car or using a ride-share service to get around Baton Rouge. The hotel we reserved blocks at is in downtown Baton Rouge, which is about three and a half blocks from the reception. Our Lady of Mercy is about a fifteen minute drive from downtown Baton Rouge.
+				</p>
+
+				<h2 class="text-center text-2xl font-[Italiana] text-neutral-700 mb-4">Lodging</h2>
+				<p class="indent-8">
+					We have reserved a hotel block at the Courtyard Marriott on Third Street. It is about a three and a half block walk to the reception venue.
+				</p>
+				<a href="https://www.marriott.com/events/start.mi?id=1700585844906&key=GRP">
+					<h1 class="text-center w-72 mx-auto my-8 bg-neutral-900 rounded py-2 text-lg text-white transition-colors hover:bg-neutral-500">Reserve Marriott Hotel Block</h1>
+				</a>
+				<p class="indent-8">
+					We are also currently waiting to hear back from two other hotels for block reservations. We will update this site with links to those when avalible.
+				</p>
 			</div>
 		</section>
 
 		<section
 			id="activities"
-			class="py-16 px-6 bg-neutral-100"
+			class="py-16 px-6"
 			x-data="{
 				activities: [
 					{
@@ -275,41 +362,9 @@
 				]
 			}"
 		>
-			<div class="max-w-screen-lg mx-auto">
+			<div class="max-w-screen-md mx-auto">
 				<h1 class="text-center text-4xl font-[Italiana] mb-12">Things to Do</h1>
 				<p class="text-center text-neutral-400">coming soon</p>
-				<!-- <div class="grid grid-col-1 gap-12">
-					<template x-for="activity in activities">
-						<div class="grid grid-cols-3 gap-4">
-							<div class="col-span-3 text-center">
-								<h1
-									class="text-xl text-center"
-									x-text="activity.name"
-								></h1>
-							</div>
-							<div class="col-span-1">
-								<img
-									class="h-full w-full object-cover rounded"
-									x-bind:src="'img/' + activity.image"
-								/>
-							</div>
-							<div class="col-span-2">
-								<p
-									class="mb-4"
-									x-text="activity.desc"
-								></p>
-								<p
-									class="text-xs"
-									x-text="activity.street"
-								></p>
-								<p
-									class="text-xs"
-									x-text="activity.city + ' ' + activity.state + ', ' + activity.postalCode"
-								></p>
-							</div>
-						</div>
-					</template>
-				</div> -->
 			</div>
 		</section>
 	</body>
