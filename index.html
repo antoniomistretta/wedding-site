@@ -16,7 +16,7 @@
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Open+Sans&family=WindSong&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Pinyon+Script&display=swap" rel="stylesheet" />
 
 		<script src="https://kit.fontawesome.com/d594aa6161.js" crossorigin="anonymous"></script>
 		<script defer src="https://unpkg.com/alpinejs-swipe"></script>
@@ -50,7 +50,7 @@
 			<button
 				@click="isOpen = !isOpen"
 				type="button"
-				class="fixed top-2 right-2 z-20 box-content w-6 h-6 p-4 bg-neutral-900 rounded"
+				class="fixed top-2 right-2 z-20 box-content w-6 h-6 p-4 bg-lime-900 rounded"
 			>
 				<i
 					x-show="isOpen"
@@ -68,7 +68,7 @@
 				x-show="isOpen"
 				x-transition:enter.duration.250ms
 				x-transition:leave.duration.250ms
-				class="fixed bg-white/50 w-screen h-screen z-10 backdrop-blur-lg pt-16 pb-24 flex flex-col justify-around"
+				class="fixed bg-white/25 w-screen h-screen z-10 backdrop-blur-lg pt-16 pb-24 flex flex-col justify-around"
 			>
 				<template x-for="link in links">
 					<span class="text-center">
@@ -76,13 +76,11 @@
 							@click="isOpen = false"
 							x-html="link.title"
 							x-bind:href="link.anchor"
-							class="text-4xl py-8 text-center hover:underline"
-						>
-
-						</a>
+							class="font-serif font-extralight text-lime-900 text-4xl py-8 text-center hover:underline"
+						></a>
 						<i
 							x-show="link.external"
-							class="relative bottom-4 fa-external-link fa-solid"
+							class="relative bottom-4 fa-external-link fa-solid text-lime-900"
 						></i>
 					</span>
 				</template>
@@ -95,12 +93,12 @@
 		>
 			<div class="max-w-screen-md mx-auto">
 				<div class="grid grid-cols-1 gap-6 justify-items-center items-center lg:grid-cols-2">
-					<div class="text-center font-[Italiana] text-2xl relative z-0 lg:text-4xl">
-						<p>Celebrating</p>
-						<h1 class="font-['WindSong'] text-7xl mt-5 relative right-4 lg:text-7xl">Antonio</h1>
-						<p>and</p>
-						<h1 class="font-['WindSong'] text-7xl mb-5 relative right-4 lg:text-7xl">Lizzie</h1>
-						<p>April 6, 2024</p>
+					<div class="text-center text-2xl relative z-0 lg:text-4xl text-lime-900">
+						<p class="font-serif font-extralight">Celebrating</p>
+						<h1 class="font-cursive text-7xl mt-5 relative lg:text-7xl">Antonio</h1>
+						<p class="font-serif font-extralight">and</p>
+						<h1 class="font-cursive text-7xl mb-5 relative right-2 lg:text-7xl">Lizzie</h1>
+						<p class="font-serif font-extralight">April 6, 2024</p>
 
 						<a
 							href="https://zola.com/wedding/louisianasaturdaynight/rsvp"
@@ -136,7 +134,6 @@
 								class="p-2 mx-2 cursor-pointer">
 								<i class="fa-solid fa-chevron-left fa-xl"></i>
 							</span>
-
 							<template x-for="(image, index) in images">
 								<span @click="activeImageIndex = index" class="p-2 cursor-pointer">
 									<i class="fa-circle fa-md"
@@ -156,7 +153,7 @@
 
 		<section
 			id="story"
-			class="py-16 px-6 bg-neutral-200"
+			class="py-16 px-6 bg-rose-50"
 		>
 			<div
 				x-data="{ selectedStoryIndex: 0 }"
@@ -232,7 +229,7 @@
 
 		<section
 			id="schedule"
-			class="py-16 px-6 bg-neutral-100"
+			class="py-16 px-6"
 			x-data="{
 				events: [
 					{
@@ -306,7 +303,7 @@
 
 		<section
 			id="accomodations"
-			class="py-16 px-6 bg-neutral-200"
+			class="py-16 px-6 bg-rose-50"
 		>
 			<div class="max-w-screen-md mx-auto font-['Open_Sans']">
 				<h1 class="text-center text-4xl font-[Italiana] text-neutral-700 mb-12">Travel and Accommodations</h1>
