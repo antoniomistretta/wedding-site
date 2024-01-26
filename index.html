@@ -33,8 +33,9 @@
 		}"
 		@scroll.window="scrollOffset = window.pageYOffset"
 		@resize.window="width = (window.innerWidth > 0) ? window.innerWidth : screen.width"
+		class="bg-rose-100"
 	>
-		<nav
+		<!-- <nav
 			x-data="{
 				isOpen: false,
 				links: [
@@ -85,27 +86,24 @@
 					</span>
 				</template>
 			</div>
-		</nav>
+		</nav> -->
 
 		<header
 			id="hero"
 			class="py-16 px-6"
 		>
-			<div class="max-w-screen-md mx-auto">
-				<div class="grid grid-cols-1 gap-6 justify-items-center items-center lg:grid-cols-2">
-					<div class="text-center text-2xl relative z-0 lg:text-4xl text-lime-900">
-						<p class="font-serif font-extralight">Celebrating</p>
-						<h1 class="font-cursive text-7xl mt-5 relative lg:text-7xl">Antonio</h1>
-						<p class="font-serif font-extralight">and</p>
-						<h1 class="font-cursive text-7xl mb-5 relative right-2 lg:text-7xl">Lizzie</h1>
-						<p class="font-serif font-extralight">April 6, 2024</p>
+			<div class="max-w-screen-lg mx-auto">
+				<div class="grid gap-6 grid-cols-1 lg:grid-cols-2">
+					<div class="text-center">
+						<h1 class="font-serif text-2xl font-extralight text-rose-900">
+							Celebrating<br /><span class="font-cursive text-7xl">Lizzie</span><br /><span class="inline-block mt-4">and</span><br /><span class="font-cursive text-7xl">Antonio</span><br />April 6 2024
+						</h1>
 
 						<a
 							href="https://zola.com/wedding/louisianasaturdaynight/rsvp"
-							class="hidden mt-8 bg-neutral-900 rounded py-2 text-white transition-colors hover:bg-neutral-500 lg:block"
+							class="inline-block bg-lime-700 text-white font-serif mt-8 py-4 px-36 rounded"
 						>RSVP</a>
 					</div>
-
 					<div
 						x-data="{
 							activeImageIndex: 0,
@@ -151,7 +149,7 @@
 			</div>
 		</header>
 
-		<section
+		<!-- <section
 			id="story"
 			class="py-16 px-6 bg-rose-50"
 		>
@@ -362,6 +360,8 @@
 				<h1 class="text-center text-4xl font-[Italiana] mb-12">Things to Do</h1>
 				<p class="text-center text-neutral-400">coming soon</p>
 			</div>
-		</section>
+		</section> -->
+
+		<div class="h-screen"></div>
 	</body>
 </html>
