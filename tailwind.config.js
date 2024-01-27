@@ -2,7 +2,10 @@
 module.exports = {
   content: ["./**/*.{html,js}"],
   theme: {
-    extend: {},
-  },
-  plugins: [],
+    fontFamily: {
+      'sans': ['"Noto Sans"'],
+      'serif': ['"Noto Serif"'],
+      'cursive': ['"Pinyon Script"']
+    }
+  }
 }
