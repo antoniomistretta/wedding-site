@@ -48,8 +48,9 @@
 		}">
 			<button
 				@click="isOpen = !isOpen"
-				class="fixed top-2 right-2 z-20 box-content w-6 h-6 p-4 bg-rose-800 hover:bg-rose-700 transition-colors rounded"
+				class="fixed top-2 right-2 z-20 box-content w-6 h-6 p-4 transition-colors rounded"
 				type="button"
+				x-bind:class="isOpen ? 'bg-green-700 hover:bg-green-800' : 'bg-rose-300 hover:bg-rose-400'"
 			>
 				<i
 					class="fa-xmark fa-solid fa-xl text-white"
@@ -118,6 +119,7 @@
 						<template x-for="(image, index) in images">
 							<img
 								class="w-full max-w-md mx-auto rounded"
+								loading="eager"
 								x-bind:src="'img/featured/' + image"
 								x-show="index == activeImageIndex"
 								x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
@@ -165,7 +167,7 @@
 				<h1 class="mb-12 text-center text-4xl font-serif font-light">Our Story</h1>
 				<div class="grid gap-8">
 					<p class="text-justify tracking-wide font-sans text-neutral-900">
-						Antonio and Lizzie first met at the very end of December, 2021. We were both in the wedding of our good friends, Madeleine and Ben Heyob. After briefly chatting at the rehearsal dinner, we really got to know each other when Antonio asked me to dance at the reception. I was instantly attracted to Antonio and enjoyed dancing with him. I thought he was handsome, clever, and funny. We talked all evening, and Antonio invited me to his New Year's party the next day. After enjoying Antonio's jambalaya, we walked to Bayou St. John to see the fireworks. Antonio and I stayed up late as we walked along the bayou, talking as though we'd known each other a long time.
+						Antonio and Lizzie first met at the very end of December, 2021. We were both in the wedding of our good friends, Madeleine and Ben Heyob. After briefly chatting at the rehearsal dinner, we really got to know each other when Antonio asked me to dance at the reception. Lizzie was instantly attracted to Antonio and enjoyed dancing with him. Lizzie thought he was handsome, clever, and funny. We talked all evening, and Antonio invited me to his New Year's party the next day. After enjoying Antonio's jambalaya, we walked to Bayou St. John to see the fireworks. Antonio and Lizzie stayed up late as we walked along the bayou, talking as though we'd known each other a long time.
 					</p>
 					<div x-data="{
 						activeImageIndex: 0,
@@ -181,7 +183,8 @@
 					}">
 						<template x-for="(image, index) in images">
 							<img
-								class="w-full max-w-md mx-auto rounded"
+								class="w-full max-w-md mx-auto rounded h-80 object-contain bg-gray-200"
+								loading="lazy"
 								x-bind:src="'img/slideshow/' + image"
 								x-show="index == activeImageIndex"
 								x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
@@ -219,7 +222,7 @@
 						</div>
 					</div>
 					<p class="text-justify tracking-wide font-sans text-neutral-900">
-						In the new year I drove back to Houston, where I was living and teaching world history at Cristo Rey Jesuit High School. As I was driving, I thought that meeting Antonio was fun and romantic, but that the relationship wouldn't go anywhere because he lived in New Orleans, and I was in Houston. However, Antonio surprised me by calling as I drove home and kept me company for the five hour drive. After that, Antonio just kept calling, and we continued to get to know each other through facetime dates. We visited each other multiple times. In New Orleans we went to Mardi Gras and biked through Audubon Park. In Houston, we visited NASA and Antonio met my cats, Gilbert and Lewis, who he loved right away. Antonio loves my cats so much that he has been getting allergy shots for about a year.
+						In the new year Lizzie drove back to Houston, where Lizzie was living and teaching world history at Cristo Rey Jesuit High School. As Lizzie was driving, Lizzie thought that meeting Antonio was fun and romantic, but that the relationship wouldn't go anywhere because he lived in New Orleans, and Lizzie was in Houston. However, Antonio surprised me by calling as Lizzie drove home and kept me company for the five hour drive. After that, Antonio just kept calling, and we continued to get to know each other through facetime dates. We visited each other multiple times. In New Orleans we went to Mardi Gras and biked through Audubon Park. In Houston, we visited NASA and Antonio met my cats, Gilbert and Lewis, who he loved right away. Antonio loves my cats so much that he has been getting allergy shots for about a year.
 					</p>
 					<div x-data="{
 						activeImageIndex: 0,
@@ -235,7 +238,8 @@
 					}">
 						<template x-for="(image, index) in images">
 							<img
-								class="w-full max-w-md mx-auto rounded"
+								class="w-full max-w-md mx-auto rounded h-80 object-contain bg-gray-200"
+								loading="lazy"
 								x-bind:src="'img/slideshow/' + image"
 								x-show="index == activeImageIndex"
 								x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
@@ -273,7 +277,7 @@
 						</div>
 					</div>
 					<p class="text-justify tracking-wide font-sans text-neutral-900">
-						Towards the end of April, I made the decision to move from Houston to New Orleans. It was difficult to leave the school I loved, but there was a new adventure awaiting back home in Louisiana. After I moved to New Orleans, Antonio and I continued to grow in love, grounded in our Catholic faith. About a year later, he proposed on the bridge where we first watched fireworks together on New Year's Eve. It was the perfect beginning to the rest of our lives.
+						Towards the end of April, Lizzie made the decision to move from Houston to New Orleans. It was difficult to leave the school she loved, but there was a new adventure awaiting back home in Louisiana. After Lizzie moved to New Orleans, Antonio and Lizzie continued to grow in love, grounded in our Catholic faith. About a year later, he proposed on the bridge where we first watched fireworks together on New Year's Eve. It was the perfect beginning to the rest of our lives.
 					</p>
 					<div x-data="{
 						activeImageIndex: 0,
@@ -289,7 +293,8 @@
 					}">
 						<template x-for="(image, index) in images">
 							<img
-								class="w-full max-w-md mx-auto rounded"
+								class="w-full max-w-md mx-auto rounded h-80 object-contain bg-gray-200"
+								loading="lazy"
 								x-bind:src="'img/slideshow/' + image"
 								x-show="index == activeImageIndex"
 								x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
@@ -363,7 +368,7 @@
 				]
 			}"
 		>
-			<div class="max-w-screen-lg mx-auto">
+			<div class="max-w-screen-md mx-auto">
 				<h1 class="mb-12 text-center text-4xl font-serif font-light">Itinerary</h1>
 				<template x-for="(event, index) in events">
 					<div class="text-center font-serif font-light">
@@ -381,6 +386,7 @@
 						></h2>
 						<img
 							class="w-full h-32 rounded object-cover my-4"
+							loading="lazy"
 							x-bind:src="'img/' + event.image"
 						/>
 						<p
