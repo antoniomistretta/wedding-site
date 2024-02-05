@@ -41,7 +41,7 @@
 				{ title: 'Our Story', icon: '', anchor: '#story' },
 				{ title: 'Itinerary', icon: '', anchor: '#schedule' },
 				{ title: 'Accommodations and Travel', icon: '', anchor: '#accommodations' },
-				<!-- { title: 'Things to Do', icon: '', anchor: '#activities' }, -->
+				{ title: 'Things to Do', icon: '', anchor: '#activities' },
 				{ title: 'Registry', icon: '', external: true, anchor: 'https://zola.com/registry/louisianasaturdaynight' },
 				{ title: 'RSVP', icon: '', external: true, cta: true, anchor: 'https://zola.com/wedding/louisianasaturdaynight/rsvp' }
 			]
@@ -447,29 +447,29 @@
 			</div>
 		</section>
 
-		<!-- <section
+		<section
 			id="activities"
 			class="py-20 px-6"
 			x-data="{
 				activities: [
 					{
 						name: 'Tiger Stadium',
-						icon: 'building-columns',
-						image: 'clock.jpg',
-						desc: 'Check out the stately oaks, broad magnolias and azaleas on LSU\'s campus. You can also stop by and say hi to Mike the Tiger.',
-						street: 'War Memorial Tower',
-						city: 'Baton Rouge',
-						state: 'LA',
-						postalCode: '70802'
+						description: 'Check out the stately oaks, broad magnolias and azaleas on LSU\'s campus. You can also stop by and say hi to Mike the Tiger.'
 					}, {
 						name: 'USS kidd Veterans Museum',
-						icon: 'ship',
-						image: 'ship.jpg',
-						desc: 'We walked by this ship on our first date while exploring the levee of Baton Rouge.',
-						street: '305 South River Road',
-						city: 'Baton Rouge',
-						state: 'LA',
-						postalCode: '70802'
+						description: 'We walked by this ship on our first date while exploring the levee of Baton Rouge.'
+					}, {
+						name: 'Louisiana State Capitol',
+						description: 'New and/or old! Both are in downtown Baton Rouge. You can explore Louisiana\'s fascinating political past and present.'
+					}, {
+						name: 'Red Stick Spice',
+						description: 'A cooking & tea store that makes their own spice blends; right by Our Lady of Mercy'
+					}, {
+						name: 'Farmer\'s Market',
+						description: 'Saturday mornings there is a farmer\'s market in downtown Baton Rouge.'
+					}, {
+						name: 'Government Street',
+						description: 'This is the street that connects Our Lady of Mercy to downtown Baton Rouge. It\'s been up and coming the past ten years, and there are a lot of cool restaurants and shops to check out!'
 					}
 				],
 				restaurants: [
@@ -485,6 +485,38 @@
 						name: 'The Vintage',
 						price: '$',
 						description: 'beignets, breakfast, sandwiches, and coffee'
+					}, {
+						name: 'Eliza\'s',
+						price: '$$$',
+						description: 'The Vukovics family\'s favorite restaurant; Louisiana cuisine - everything is good here, you can\'t go wrong.'
+					}, {
+						name: 'Elsie\'s Plate and Pie',
+						price: '$$',
+						description: 'Louisiana cuisine and lots of pie; voted the best restaurant in BR many years'
+					}, {
+						name: 'Jed\'s',
+						price: '$$',
+						description: 'Louisiana cuisine, really good poboys'
+					}, {
+						name: 'The Chimes',
+						price: '$$',
+						description: 'on LSU\'s campus, rooftop bar, great atmosphere, Louisiana cuisine'
+					}, {
+						name: 'Reginelli\'s',
+						price: '$$',
+						description: 'pizza, also near Our Lady of Mercy'
+					}, {
+						name: 'Louie\'s',
+						price: '$',
+						description: '24/7 diner on LSU\'s campus; their hash browns are amazing'
+					}, {
+						name: 'Anthony\'s Deli',
+						price: '$',
+						description: 'sandwiches and pasta; closes at 6pm; right by Our Lady of Mercy'
+					}, {
+						name: 'MJ\'s Cafe',
+						price: '$',
+						description: 'vegan breakfast & lunch; plant-based soups, wraps, and sandwiches'
 					}
 				]
 			}"
@@ -492,21 +524,36 @@
 			<div class="max-w-screen-md mx-auto">
 				<h1 class="mb-12 text-center text-4xl font-serif font-light">Things to Do</h1>
 
-				<h2 class="text-3xl mt-4 text-center font-serif font-light mb-4">Restaurants</h2>
-				<template x-for="(restaurant, index) in restaurants">
-					<div class="text-center">
-						<p
-							class="text-md font-sans text-neutral-500"
-							x-text="restaurant.price"
-						></p>
-						<h3
-							class="text-lg mb-2 font-serif"
-							x-text="restaurant.name"
-						></h3>
-						<p class="text-sm" x-text="restaurant.description"></p>
-					</div>
-				</template>
+				<div class="border-2 border-lime-800 p-12 rounded">
+					<h2 class="text-3xl text-center font-serif font-light mb-4">Restaurants</h2>
+					<template x-for="(restaurant, index) in restaurants">
+						<div class="text-center mt-6">
+							<p
+								class="text-md font-sans text-neutral-500"
+								x-text="restaurant.price"
+							></p>
+							<h3
+								class="text-lg font-serif mb-2"
+								x-text="restaurant.name"
+							></h3>
+							<p class="text-sm" x-text="restaurant.description"></p>
+						</div>
+					</template>
+				</div>
+
+				<div class="border-2 border-lime-800 p-12 rounded mt-12">
+					<h2 class="text-3xl text-center font-serif font-light mb-4">Points of Interest</h2>
+					<template x-for="(activity, index) in activities">
+						<div class="text-center mt-6">
+							<h3
+								class="text-lg font-serif mb-2"
+								x-text="activity.name"
+							></h3>
+							<p class="text-sm" x-text="activity.description"></p>
+						</div>
+					</template>
+				</div>
 			</div>
-		</section> -->
+		</section>
 	</body>
 </html>
