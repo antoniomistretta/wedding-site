@@ -100,9 +100,15 @@
 						<h1 class="font-cursive text-7xl mb-5 relative text-lime-900">Lizzie</h1>
 						<p>April 6, 2024</p>
 
-						<a href="https://zola.com/wedding/louisianasaturdaynight/rsvp">
-							<p class="mt-12 py-4 bg-lime-900 hover:bg-lime-800 transition-colors text-white font-bold rounded">RSVP</p>
-						</a>
+						<div class="grid gap-4 mt-12 grid-cols-1 md:grid-cols-2">
+							<a href="https://zola.com/wedding/louisianasaturdaynight/rsvp">
+								<p class="py-4 bg-lime-900 hover:bg-lime-800 transition-colors text-white border-4 border-lime-900 hover:border-lime-800 font-bold rounded">RSVP</p>
+							</a>
+
+							<a href="https://zola.com/registry/louisianasaturdaynight">
+								<p class="py-4 transition-colors font-bold text-lime-900 hover:text-lime-800 border-4 border-lime-900 hover:border-lime-800 rounded">Our Registry</p>
+							</a>
+						</div>
 					</div>
 
 					<div x-data="{
@@ -390,7 +396,7 @@
 							x-bind:src="'img/' + event.image"
 						/>
 						<p
-							class="text-lg mb-2"
+							class="text-lg"
 							x-text="event.venue"
 						></p>
 						<a class="inline-block px-8 py-4" x-bind:href="event.mapLink">
@@ -406,7 +412,7 @@
 					</div>
 				</template>
 				<a href="https://zola.com/wedding/louisianasaturdaynight/rsvp">
-					<p class="text-center text-3xl font-serif mt-8 py-4 bg-lime-900 hover:bg-lime-800 transition-colors text-white font-bold rounded">RSVP</p>
+					<p class="text-center text-3xl font-serif mt-8 py-4 bg-lime-900 hover:bg-lime-800 transition-colors text-white border-4 border-lime-900 hover:border-lime-800 font-bold rounded">RSVP</p>
 				</a>
 			</div>
 		</section>
