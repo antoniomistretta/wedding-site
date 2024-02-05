@@ -41,15 +41,16 @@
 				{ title: 'Our Story', icon: '', anchor: '#story' },
 				{ title: 'Itinerary', icon: '', anchor: '#schedule' },
 				{ title: 'Accommodations and Travel', icon: '', anchor: '#accommodations' },
-				<!-- { title: 'Things to Do', icon: '', anchor: '#activities' }, -->
+				{ title: 'Things to Do', icon: '', anchor: '#activities' },
 				{ title: 'Registry', icon: '', external: true, anchor: 'https://zola.com/registry/louisianasaturdaynight' },
 				{ title: 'RSVP', icon: '', external: true, cta: true, anchor: 'https://zola.com/wedding/louisianasaturdaynight/rsvp' }
 			]
 		}">
 			<button
 				@click="isOpen = !isOpen"
-				class="fixed top-2 right-2 z-20 box-content w-6 h-6 p-4 bg-rose-800 hover:bg-rose-700 transition-colors rounded"
+				class="fixed top-2 right-2 z-20 box-content w-6 h-6 p-4 transition-colors rounded"
 				type="button"
+				x-bind:class="isOpen ? 'bg-green-700 hover:bg-green-800' : 'bg-rose-300 hover:bg-rose-400'"
 			>
 				<i
 					class="fa-xmark fa-solid fa-xl text-white"
@@ -99,9 +100,15 @@
 						<h1 class="font-cursive text-7xl mb-5 relative text-lime-900">Lizzie</h1>
 						<p>April 6, 2024</p>
 
-						<a href="https://zola.com/wedding/louisianasaturdaynight/rsvp">
-							<p class="mt-12 py-4 bg-lime-900 hover:bg-lime-800 transition-colors text-white font-bold rounded">RSVP</p>
-						</a>
+						<div class="grid gap-4 mt-12 grid-cols-1 md:grid-cols-2">
+							<a href="https://zola.com/wedding/louisianasaturdaynight/rsvp">
+								<p class="py-4 bg-lime-900 hover:bg-lime-800 transition-colors text-white border-4 border-lime-900 hover:border-lime-800 font-bold rounded">RSVP</p>
+							</a>
+
+							<a href="https://zola.com/registry/louisianasaturdaynight">
+								<p class="py-4 transition-colors font-bold text-lime-900 hover:text-lime-800 border-4 border-lime-900 hover:border-lime-800 rounded">Our Registry</p>
+							</a>
+						</div>
 					</div>
 
 					<div x-data="{
@@ -118,6 +125,7 @@
 						<template x-for="(image, index) in images">
 							<img
 								class="w-full max-w-md mx-auto rounded"
+								loading="eager"
 								x-bind:src="'img/featured/' + image"
 								x-show="index == activeImageIndex"
 								x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
@@ -165,7 +173,7 @@
 				<h1 class="mb-12 text-center text-4xl font-serif font-light">Our Story</h1>
 				<div class="grid gap-8">
 					<p class="text-justify tracking-wide font-sans text-neutral-900">
-						Antonio and Lizzie first met at the very end of December, 2021. We were both in the wedding of our good friends, Madeleine and Ben Heyob. After briefly chatting at the rehearsal dinner, we really got to know each other when Antonio asked me to dance at the reception. I was instantly attracted to Antonio and enjoyed dancing with him. I thought he was handsome, clever, and funny. We talked all evening, and Antonio invited me to his New Year's party the next day. After enjoying Antonio's jambalaya, we walked to Bayou St. John to see the fireworks. Antonio and I stayed up late as we walked along the bayou, talking as though we'd known each other a long time.
+						Antonio and Lizzie first met at the very end of December, 2021. We were both in the wedding of our good friends, Madeleine and Ben Heyob. After briefly chatting at the rehearsal dinner, we really got to know each other when Antonio asked me to dance at the reception. Lizzie was instantly attracted to Antonio and enjoyed dancing with him. Lizzie thought he was handsome, clever, and funny. We talked all evening, and Antonio invited me to his New Year's party the next day. After enjoying Antonio's jambalaya, we walked to Bayou St. John to see the fireworks. Antonio and Lizzie stayed up late as we walked along the bayou, talking as though we'd known each other a long time.
 					</p>
 					<div x-data="{
 						activeImageIndex: 0,
@@ -181,7 +189,8 @@
 					}">
 						<template x-for="(image, index) in images">
 							<img
-								class="w-full max-w-md mx-auto rounded"
+								class="w-full max-w-md mx-auto rounded h-80 object-contain bg-gray-200"
+								loading="lazy"
 								x-bind:src="'img/slideshow/' + image"
 								x-show="index == activeImageIndex"
 								x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
@@ -219,7 +228,7 @@
 						</div>
 					</div>
 					<p class="text-justify tracking-wide font-sans text-neutral-900">
-						In the new year I drove back to Houston, where I was living and teaching world history at Cristo Rey Jesuit High School. As I was driving, I thought that meeting Antonio was fun and romantic, but that the relationship wouldn't go anywhere because he lived in New Orleans, and I was in Houston. However, Antonio surprised me by calling as I drove home and kept me company for the five hour drive. After that, Antonio just kept calling, and we continued to get to know each other through facetime dates. We visited each other multiple times. In New Orleans we went to Mardi Gras and biked through Audubon Park. In Houston, we visited NASA and Antonio met my cats, Gilbert and Lewis, who he loved right away. Antonio loves my cats so much that he has been getting allergy shots for about a year.
+						In the new year Lizzie drove back to Houston, where Lizzie was living and teaching world history at Cristo Rey Jesuit High School. As Lizzie was driving, Lizzie thought that meeting Antonio was fun and romantic, but that the relationship wouldn't go anywhere because he lived in New Orleans, and Lizzie was in Houston. However, Antonio surprised me by calling as Lizzie drove home and kept me company for the five hour drive. After that, Antonio just kept calling, and we continued to get to know each other through facetime dates. We visited each other multiple times. In New Orleans we went to Mardi Gras and biked through Audubon Park. In Houston, we visited NASA and Antonio met my cats, Gilbert and Lewis, who he loved right away. Antonio loves my cats so much that he has been getting allergy shots for about a year.
 					</p>
 					<div x-data="{
 						activeImageIndex: 0,
@@ -235,7 +244,8 @@
 					}">
 						<template x-for="(image, index) in images">
 							<img
-								class="w-full max-w-md mx-auto rounded"
+								class="w-full max-w-md mx-auto rounded h-80 object-contain bg-gray-200"
+								loading="lazy"
 								x-bind:src="'img/slideshow/' + image"
 								x-show="index == activeImageIndex"
 								x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
@@ -273,7 +283,7 @@
 						</div>
 					</div>
 					<p class="text-justify tracking-wide font-sans text-neutral-900">
-						Towards the end of April, I made the decision to move from Houston to New Orleans. It was difficult to leave the school I loved, but there was a new adventure awaiting back home in Louisiana. After I moved to New Orleans, Antonio and I continued to grow in love, grounded in our Catholic faith. About a year later, he proposed on the bridge where we first watched fireworks together on New Year's Eve. It was the perfect beginning to the rest of our lives.
+						Towards the end of April, Lizzie made the decision to move from Houston to New Orleans. It was difficult to leave the school she loved, but there was a new adventure awaiting back home in Louisiana. After Lizzie moved to New Orleans, Antonio and Lizzie continued to grow in love, grounded in our Catholic faith. About a year later, he proposed on the bridge where we first watched fireworks together on New Year's Eve. It was the perfect beginning to the rest of our lives.
 					</p>
 					<div x-data="{
 						activeImageIndex: 0,
@@ -289,7 +299,8 @@
 					}">
 						<template x-for="(image, index) in images">
 							<img
-								class="w-full max-w-md mx-auto rounded"
+								class="w-full max-w-md mx-auto rounded h-80 object-contain bg-gray-200"
+								loading="lazy"
 								x-bind:src="'img/slideshow/' + image"
 								x-show="index == activeImageIndex"
 								x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
@@ -363,7 +374,7 @@
 				]
 			}"
 		>
-			<div class="max-w-screen-lg mx-auto">
+			<div class="max-w-screen-md mx-auto">
 				<h1 class="mb-12 text-center text-4xl font-serif font-light">Itinerary</h1>
 				<template x-for="(event, index) in events">
 					<div class="text-center font-serif font-light">
@@ -381,10 +392,11 @@
 						></h2>
 						<img
 							class="w-full h-32 rounded object-cover my-4"
+							loading="lazy"
 							x-bind:src="'img/' + event.image"
 						/>
 						<p
-							class="text-lg mb-2"
+							class="text-lg"
 							x-text="event.venue"
 						></p>
 						<a class="inline-block px-8 py-4" x-bind:href="event.mapLink">
@@ -400,7 +412,7 @@
 					</div>
 				</template>
 				<a href="https://zola.com/wedding/louisianasaturdaynight/rsvp">
-					<p class="text-center text-3xl font-serif mt-8 py-4 bg-lime-900 hover:bg-lime-800 transition-colors text-white font-bold rounded">RSVP</p>
+					<p class="text-center text-3xl font-serif mt-8 py-4 bg-lime-900 hover:bg-lime-800 transition-colors text-white border-4 border-lime-900 hover:border-lime-800 font-bold rounded">RSVP</p>
 				</a>
 			</div>
 		</section>
@@ -435,29 +447,29 @@
 			</div>
 		</section>
 
-		<!-- <section
+		<section
 			id="activities"
 			class="py-20 px-6"
 			x-data="{
 				activities: [
 					{
 						name: 'Tiger Stadium',
-						icon: 'building-columns',
-						image: 'clock.jpg',
-						desc: 'Check out the stately oaks, broad magnolias and azaleas on LSU\'s campus. You can also stop by and say hi to Mike the Tiger.',
-						street: 'War Memorial Tower',
-						city: 'Baton Rouge',
-						state: 'LA',
-						postalCode: '70802'
+						description: 'Check out the stately oaks, broad magnolias and azaleas on LSU\'s campus. You can also stop by and say hi to Mike the Tiger.'
 					}, {
 						name: 'USS kidd Veterans Museum',
-						icon: 'ship',
-						image: 'ship.jpg',
-						desc: 'We walked by this ship on our first date while exploring the levee of Baton Rouge.',
-						street: '305 South River Road',
-						city: 'Baton Rouge',
-						state: 'LA',
-						postalCode: '70802'
+						description: 'We walked by this ship on our first date while exploring the levee of Baton Rouge.'
+					}, {
+						name: 'Louisiana State Capitol',
+						description: 'New and/or old! Both are in downtown Baton Rouge. You can explore Louisiana\'s fascinating political past and present.'
+					}, {
+						name: 'Red Stick Spice',
+						description: 'A cooking & tea store that makes their own spice blends; right by Our Lady of Mercy'
+					}, {
+						name: 'Farmer\'s Market',
+						description: 'Saturday mornings there is a farmer\'s market in downtown Baton Rouge.'
+					}, {
+						name: 'Government Street',
+						description: 'This is the street that connects Our Lady of Mercy to downtown Baton Rouge. It\'s been up and coming the past ten years, and there are a lot of cool restaurants and shops to check out!'
 					}
 				],
 				restaurants: [
@@ -473,6 +485,38 @@
 						name: 'The Vintage',
 						price: '$',
 						description: 'beignets, breakfast, sandwiches, and coffee'
+					}, {
+						name: 'Eliza\'s',
+						price: '$$$',
+						description: 'The Vukovics family\'s favorite restaurant; Louisiana cuisine - everything is good here, you can\'t go wrong.'
+					}, {
+						name: 'Elsie\'s Plate and Pie',
+						price: '$$',
+						description: 'Louisiana cuisine and lots of pie; voted the best restaurant in BR many years'
+					}, {
+						name: 'Jed\'s',
+						price: '$$',
+						description: 'Louisiana cuisine, really good poboys'
+					}, {
+						name: 'The Chimes',
+						price: '$$',
+						description: 'on LSU\'s campus, rooftop bar, great atmosphere, Louisiana cuisine'
+					}, {
+						name: 'Reginelli\'s',
+						price: '$$',
+						description: 'pizza, also near Our Lady of Mercy'
+					}, {
+						name: 'Louie\'s',
+						price: '$',
+						description: '24/7 diner on LSU\'s campus; their hash browns are amazing'
+					}, {
+						name: 'Anthony\'s Deli',
+						price: '$',
+						description: 'sandwiches and pasta; closes at 6pm; right by Our Lady of Mercy'
+					}, {
+						name: 'MJ\'s Cafe',
+						price: '$',
+						description: 'vegan breakfast & lunch; plant-based soups, wraps, and sandwiches'
 					}
 				]
 			}"
@@ -480,21 +524,36 @@
 			<div class="max-w-screen-md mx-auto">
 				<h1 class="mb-12 text-center text-4xl font-serif font-light">Things to Do</h1>
 
-				<h2 class="text-3xl mt-4 text-center font-serif font-light mb-4">Restaurants</h2>
-				<template x-for="(restaurant, index) in restaurants">
-					<div class="text-center">
-						<p
-							class="text-md font-sans text-neutral-500"
-							x-text="restaurant.price"
-						></p>
-						<h3
-							class="text-lg mb-2 font-serif"
-							x-text="restaurant.name"
-						></h3>
-						<p class="text-sm" x-text="restaurant.description"></p>
-					</div>
-				</template>
+				<div class="border-2 border-lime-800 p-12 rounded">
+					<h2 class="text-3xl text-center font-serif font-light mb-4">Restaurants</h2>
+					<template x-for="(restaurant, index) in restaurants">
+						<div class="text-center mt-6">
+							<p
+								class="text-md font-sans text-neutral-500"
+								x-text="restaurant.price"
+							></p>
+							<h3
+								class="text-lg font-serif mb-2"
+								x-text="restaurant.name"
+							></h3>
+							<p class="text-sm" x-text="restaurant.description"></p>
+						</div>
+					</template>
+				</div>
+
+				<div class="border-2 border-lime-800 p-12 rounded mt-12">
+					<h2 class="text-3xl text-center font-serif font-light mb-4">Points of Interest</h2>
+					<template x-for="(activity, index) in activities">
+						<div class="text-center mt-6">
+							<h3
+								class="text-lg font-serif mb-2"
+								x-text="activity.name"
+							></h3>
+							<p class="text-sm" x-text="activity.description"></p>
+						</div>
+					</template>
+				</div>
 			</div>
-		</section> -->
+		</section>
 	</body>
 </html>
