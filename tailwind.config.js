@@ -7,5 +7,8 @@ module.exports = {
       'serif': ['"Noto Serif"'],
       'cursive': ['"Pinyon Script"']
     }
-  }
+  },
+  plugins: [
+    require('@tailwindcss/typography')
+  ]
 }
