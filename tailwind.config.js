@@ -5,10 +5,7 @@ module.exports = {
     fontFamily: {
       'sans': ['"Noto Sans"'],
       'serif': ['"Noto Serif"'],
-      'cursive': ['"Pinyon Script"']
-    }
+      'cursive': ['"Pinyon Script"'],
+    },
   },
-  plugins: [
-    require('@tailwindcss/typography')
-  ]
 }
