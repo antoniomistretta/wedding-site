@@ -9,8 +9,7 @@
 		<meta property="og:title" content="April 6th, 2023 - Baton Rouge, LA">
 		<meta property="og:description" content="Antonio and Lizzie">
 		<meta property="og:type" content="website">
-		<meta property="og:url" content="antonioandlizzie.us">
-		<meta property="og:image" content="http://www.antonioandlizzie.us/img/hero.jpg">
+		<meta property="og:url" content="antonioandlizzie.us">		<meta property="og:image" content="http://www.antonioandlizzie.us/img/hero.jpg',">
 		<meta property="og:image:width" content="1600" />
 		<meta property="og:image:height" content="900" />
 
@@ -20,556 +19,89 @@
 
 		<script src="https://kit.fontawesome.com/d594aa6161.js" crossorigin="anonymous"></script>
 		<script defer src="https://unpkg.com/alpinejs-swipe"></script>
-		<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
-		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3/dist/cdn.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
 
 		<link href="styles.css" rel="stylesheet">
 	</head>
 
-	<body
-		@scroll.window="scrollOffset = window.pageYOffset"
-		@resize.window="width = (window.innerWidth > 0) ? window.innerWidth : screen.width"
-		class="bg-rose-100"
-		x-data="{
-			scrollOffset: window.pageYOffset,
-			width: (window.innerWidth > 0) ? window.innerWidth : screen.width
-		}"
-	>
-		<nav x-data="{
-			isOpen: false,
-			links: [
-				{ title: 'Our Story', icon: '', anchor: '#story' },
-				{ title: 'Itinerary', icon: '', anchor: '#schedule' },
-				{ title: 'Attire', icon: '', anchor: '#attire' },
-				{ title: 'Accommodations and Travel', icon: '', anchor: '#accommodations' },
-				{ title: 'Things to Do', icon: '', anchor: '#activities' },
-				{ title: 'Registry', icon: '', external: true, anchor: 'https://zola.com/registry/louisianasaturdaynight' },
-				{ title: 'RSVP', icon: '', external: true, cta: true, anchor: 'https://zola.com/wedding/louisianasaturdaynight/rsvp' }
-			]
-		}">
-			<button
-				@click="isOpen = !isOpen"
-				class="fixed top-2 right-2 z-20 box-content w-6 h-6 p-4 transition-colors rounded"
-				type="button"
-				x-bind:class="isOpen ? 'bg-green-700 hover:bg-green-800' : 'bg-rose-300 hover:bg-rose-400'"
-			>
-				<i
-					class="fa-xmark fa-solid fa-xl text-white"
-					x-show="isOpen"
-					x-transition:enter.duration.250ms
-				></i>
-				<i
-					class="fa-bars fa-solid fa-xl text-white"
-					x-show="!isOpen"
-					x-transition:enter.duration.250ms
-				></i>
-			</button>
+	<body>
+		<div
+			id="gallery"
+			class="py-20 px-6"
+			x-data="{
+				imageGroups: {
+					'Bride & Groom': ['_L4A0777.jpg','_L4A0780.jpg','_L4A0788.jpg','_L4A0794.jpg','_L4A0802.jpg','_L4A0804.jpg','_L4A0812.jpg','_L4A0815.jpg','_L4A1235.jpg','_L4A1237.jpg','_L4A1241.jpg','_L4A1244.jpg','_L4A1308-Edit.jpg','_L4A1312.jpg','_L4A1325.jpg','_L4A1352.jpg','_L4A1355.jpg','_L4A1356.jpg','_L4A1411.jpg','8A6A3306.jpg','8A6A3308.jpg','8A6A3313-2.jpg','8A6A3313.jpg','8A6A3316.jpg','8A6A3320.jpg','8A6A3327.jpg','8A6A3329-2.jpg','8A6A3329.jpg','8A6A3334.jpg','8A6A3336-2.jpg','8A6A3336.jpg','8A6A3340.jpg','8A6A3341.jpg','8A6A3346.jpg','8A6A3348.jpg','8A6A3350.jpg','8A6A3355-2.jpg','8A6A3355.jpg','8A6A3362.jpg','8A6A3367.jpg','8A6A3375.jpg','8A6A3377-2.jpg','8A6A3377.jpg','8A6A3384.jpg','8A6A3386.jpg','8A6A3387.jpg','8A6A3392.jpg','8A6A3393-2.jpg','8A6A3393.jpg','8A6A3395.jpg','8A6A3397.jpg','8A6A3422.jpg','8A6A3423.jpg','8A6A3440.jpg','8A6A3441.jpg','8A6A3442.jpg','8A6A3443.jpg','8A6A3444.jpg','8A6A3446.jpg','8A6A3449.jpg','8A6A3453.jpg','8A6A3455.jpg','8A6A3456.jpg','8A6A3458.jpg','8A6A3468.jpg','8A6A3469-2.jpg','8A6A3469.jpg','8A6A3476.jpg','8A6A3481.jpg','8A6A3964.jpg','8A6A3968.jpg','8A6A3972-2.jpg','8A6A3972.jpg','8A6A3975.jpg','8A6A3978.jpg','8A6A3987.jpg','8A6A3989-2.jpg','8A6A3989.jpg','8A6A3993.jpg','8A6A4004.jpg','8A6A4016.jpg','8A6A4035-Edit.jpg','8A6A4038-Edit.jpg','8A6A4039.jpg','8A6A4048.jpg','8A6A4052.jpg','8A6A4054.jpg','8A6A4066.jpg','8A6A4086.jpg','8A6A4089.jpg','8A6A4094-Edit.jpg','8A6A4102-Edit.jpg','8A6A4105-2.jpg','8A6A4105.jpg','8A6A4117-Edit.jpg','8A6A4125-Edit.jpg','8A6A4130-2.jpg','8A6A4130.jpg','8A6A4143.jpg','8A6A4169-Edit.jpg','8A6A4174.jpg','8A6A4186-2.jpg','8A6A4186.jpg','8A6A4196.jpg','8A6A4198.jpg','8A6A4201.jpg','8A6A4208-Edit.jpg','8A6A4230-Edit.jpg','8A6A4249.jpg','8A6A4253.jpg','8A6A4261.jpg','8A6A4266-2.jpg','8A6A4266.jpg','8A6A4284.jpg','8A6A4289.jpg','8A6A4297-2.jpg','8A6A4297-3.jpg','8A6A4297.jpg','8A6A4304.jpg','8A6A4306-2.jpg','8A6A4306.jpg','8A6A4307.jpg','8A6A4317.jpg','8A6A4334.jpg','8A6A4344-2.jpg','8A6A4344.jpg','8A6A4396.jpg','8A6A4397.jpg','8A6A4401.jpg','8A6A4412.jpg','8A6A4416.jpg','8A6A4418.jpg','8A6A4420.jpg','8A6A4425.jpg','8A6A4426.jpg','8A6A4438.jpg','8A6A4447.jpg','8A6A4459.jpg','8A6A4465.jpg','8A6A4467.jpg','8A6A4479.jpg','8A6A4487.jpg','8A6A4495.jpg','8A6A4513.jpg','8A6A4523.jpg','8A6A4527.jpg','8A6A4536.jpg','8A6A4542.jpg','8A6A4545.jpg','8A6A4550.jpg','8A6A4571.jpg','8A6A4573.jpg','8A6A4575.jpg','8A6A4577.jpg'],
+					'Ceremony': ['_L4A0120.jpg','_L4A0135.jpg','_L4A0146.jpg','_L4A0147.jpg','_L4A0153.jpg','_L4A0158.jpg','_L4A0160.jpg','_L4A0161.jpg','_L4A0163.jpg','_L4A0173.jpg','_L4A0181.jpg','_L4A0191.jpg','_L4A0323-2.jpg','_L4A0323.jpg','_L4A0325.jpg','_L4A0338.jpg','_L4A0344.jpg','_L4A0349.jpg','_L4A0352.jpg','_L4A0358.jpg','_L4A0369.jpg','_L4A0382.jpg','_L4A0391.jpg','_L4A0399.jpg','_L4A0407.jpg','_L4A0422.jpg','_L4A0429.jpg','_L4A0438.jpg','_L4A0455.jpg','_L4A0472.jpg','_L4A0493.jpg','_L4A0496.jpg','_L4A0499.jpg','_L4A0519.jpg','_L4A0521.jpg','_L4A0530.jpg','_L4A0534.jpg','_L4A0540.jpg','_L4A0543.jpg','_L4A0546.jpg','_L4A0566.jpg','_L4A0578.jpg','_L4A0580.jpg','_L4A0584.jpg','_L4A0587.jpg','_L4A0596.jpg','_L4A0605-2.jpg','_L4A0605.jpg','_L4A0608-2.jpg','_L4A0608.jpg','_L4A0613.jpg','_L4A0615.jpg','_L4A0619.jpg','_L4A0623.jpg','_L4A0626.jpg','_L4A0630.jpg','_L4A0640.jpg','_L4A0644.jpg','_L4A0659.jpg','_L4A0662.jpg','_L4A0697.jpg','_L4A0704.jpg','_L4A0719.jpg','_L4A0725.jpg','_L4A0738-2.jpg','_L4A0738.jpg','_L4A0749.jpg','_L4A0759.jpg','3F5A4512.jpg','3F5A4516.jpg','3F5A4518.jpg','3F5A4519.jpg','3F5A4523.jpg','3F5A4526.jpg','3F5A4530.jpg','3F5A4532.jpg','3F5A4539.jpg','3F5A4545.jpg','3F5A4551.jpg','3F5A4555.jpg','3F5A4563.jpg','3F5A4567.jpg','3F5A4568.jpg','3F5A4573.jpg','3F5A4575.jpg','3F5A4577.jpg','3F5A4591.jpg','3F5A4593.jpg','3F5A4595.jpg','3F5A4598.jpg','3F5A4607.jpg','3F5A4611.jpg','3F5A4612.jpg','3F5A4613.jpg','3F5A4616.jpg','3F5A4625.jpg','3F5A4627.jpg','3F5A4630.jpg','3F5A4632.jpg','3F5A4633.jpg','3F5A4637.jpg','3F5A4641.jpg','3F5A4652.jpg','3F5A4664.jpg','3F5A4676.jpg','3F5A4687.jpg','3F5A4693.jpg','3F5A4702.jpg','3F5A4705.jpg','3F5A4711.jpg','3F5A4715.jpg','3F5A4719.jpg','3F5A4721.jpg','3F5A4724.jpg','3F5A4730.jpg','3F5A4743.jpg','3F5A4744.jpg','3F5A4749.jpg','3F5A4752.jpg','3F5A4754.jpg','3F5A4756.jpg','3F5A4757.jpg','3F5A4759-2.jpg','3F5A4759.jpg','3F5A4761.jpg','3F5A4762.jpg','3F5A4764.jpg','3F5A4770.jpg','3F5A4772.jpg','3F5A4773.jpg','3F5A4774.jpg','3F5A4776-2.jpg','3F5A4776.jpg','3F5A4779.jpg','3F5A4780.jpg','3F5A4782.jpg','3F5A4785.jpg','3F5A4788.jpg','3F5A4791.jpg','3F5A4794.jpg','3F5A4802.jpg','3F5A4811.jpg','3F5A4815.jpg','3F5A4820.jpg','3F5A4823.jpg','3F5A4830.jpg','3F5A4838.jpg','3F5A4843-2.jpg','3F5A4843.jpg','3F5A4846.jpg','3F5A4848.jpg','3F5A4852.jpg','3F5A4853.jpg','3F5A4854.jpg','3F5A4860.jpg','3F5A4861.jpg','3F5A4864.jpg','3F5A4867.jpg','3F5A4872.jpg','3F5A4878.jpg','3F5A4884.jpg','3F5A4889.jpg','3F5A4897.jpg','3F5A4902.jpg','3F5A4905.jpg','3F5A4912.jpg','3F5A4913.jpg','3F5A4915.jpg','3F5A4918.jpg','3F5A4920.jpg','3F5A4921.jpg','3F5A4924.jpg','3F5A4936.jpg','3F5A4941.jpg','3F5A4944.jpg','3F5A4946.jpg','3F5A4949.jpg','3F5A4952.jpg','3F5A4953.jpg','3F5A4959.jpg','3F5A4964.jpg','3F5A4966.jpg','3F5A4967.jpg','3F5A4974.jpg','3F5A4977.jpg','3F5A4979.jpg','3F5A4987.jpg','3F5A4999.jpg','3F5A5007.jpg','3F5A5009.jpg','3F5A5011.jpg','3F5A5013.jpg','3F5A5014.jpg','3F5A5017.jpg','3F5A5022.jpg','3F5A5024.jpg','3F5A5027.jpg','3F5A5035.jpg','3F5A5037.jpg','3F5A5042.jpg','3F5A5043-2.jpg','3F5A5043.jpg','3F5A5046.jpg','3F5A5051.jpg','8A6A3003.jpg','8A6A3009.jpg','8A6A3010-2.jpg','8A6A3010.jpg','8A6A3012-2.jpg','8A6A3012.jpg','8A6A3013.jpg','8A6A3016.jpg','8A6A3025.jpg','8A6A3028.jpg','8A6A3029.jpg','8A6A3032.jpg','8A6A3034.jpg','8A6A3037.jpg','8A6A3040.jpg','8A6A3042.jpg','8A6A3044.jpg','8A6A3047.jpg','8A6A3053.jpg','8A6A3076.jpg','8A6A3091.jpg','8A6A3101.jpg','8A6A3105.jpg','8A6A3106.jpg','8A6A3112.jpg','8A6A3115.jpg','8A6A3124.jpg','8A6A3156.jpg'],
+					'Details': ['_L4A0841.jpg','_L4A0844.jpg','_L4A0846.jpg','_L4A0848.jpg','_L4A0850.jpg','_L4A0853.jpg','_L4A0855.jpg','_L4A0858.jpg','_L4A0859.jpg','_L4A0861.jpg','_L4A0863.jpg','_L4A0866.jpg','_L4A0867.jpg','_L4A0870.jpg','_L4A0871.jpg','_L4A0873.jpg','_L4A0874.jpg','_L4A0875.jpg','_L4A0877.jpg','_L4A0880.jpg','_L4A0882.jpg','_L4A0884.jpg','_L4A0890.jpg','_L4A0891.jpg','_L4A0897.jpg','_L4A0899.jpg','_L4A1418.jpg','_L4A1420.jpg','_L4A1427.jpg','_L4A1430.jpg','_L4A1433.jpg','_L4A1443.jpg','_L4A1456.jpg','_L4A1496.jpg','_L4A1505.jpg','_L4A1516.jpg','_L4A2439.jpg','8A6A3760.jpg','8A6A4595.jpg','8A6A4738.jpg'],
+					'Family': ['8A6A3163.jpg','8A6A3169.jpg','8A6A3172.jpg','8A6A3173.jpg','8A6A3175.jpg','8A6A3182.jpg','8A6A3183.jpg','8A6A3188.jpg','8A6A3192.jpg','8A6A3198-Edit.jpg','8A6A3200.jpg','8A6A3202.jpg','8A6A3205.jpg','8A6A3207.jpg','8A6A3209.jpg','8A6A3213.jpg','8A6A3215.jpg','8A6A3220.jpg','8A6A3225.jpg','8A6A3228.jpg','8A6A3234.jpg','8A6A3237.jpg','8A6A3241.jpg','8A6A3246-Edit.jpg','8A6A3254-Edit.jpg','8A6A3262-Edit.jpg','8A6A3264-Edit.jpg','8A6A3272.jpg'],
+					'Girls Getting Ready': ['8A6A2802.jpg','8A6A2807.jpg','8A6A2810.jpg','8A6A2812.jpg','8A6A2818.jpg','8A6A2823.jpg','8A6A2825.jpg','8A6A2829.jpg','8A6A2841.jpg','8A6A2842.jpg','8A6A2848.jpg','8A6A2854.jpg','8A6A2858.jpg','8A6A2863.jpg','8A6A2867.jpg','8A6A2868.jpg','8A6A2872.jpg','8A6A2877.jpg','8A6A2880.jpg','8A6A2882.jpg','8A6A2884.jpg','8A6A2886.jpg','8A6A2898.jpg','8A6A2904.jpg','8A6A2906-2.jpg','8A6A2906.jpg','8A6A2908.jpg','8A6A2912.jpg','8A6A2916.jpg','8A6A2918-2.jpg','8A6A2918.jpg','8A6A2925.jpg','8A6A2927.jpg','8A6A2932.jpg','8A6A2933-2.jpg','8A6A2935.jpg','8A6A2940.jpg','8A6A2943-2.jpg','8A6A2943.jpg','8A6A2946.jpg','8A6A2948-2.jpg','8A6A2948.jpg','8A6A2950.jpg','8A6A2951.jpg','8A6A2952.jpg','8A6A2954.jpg','8A6A2958.jpg','8A6A2962.jpg','8A6A2965-2.jpg','8A6A2965.jpg','8A6A2969.jpg','8A6A2979.jpg','8A6A2981.jpg','8A6A2983.jpg','8A6A2995.jpg'],
+					'Guys Getting Ready': ['_L4A0001.jpg','_L4A0005.jpg','_L4A0006.jpg','_L4A0019.jpg','_L4A0031.jpg','_L4A0038.jpg','_L4A0040.jpg','_L4A0048.jpg','_L4A0057.jpg','_L4A0060.jpg','_L4A0063.jpg','_L4A0066.jpg','_L4A0068.jpg','_L4A0086.jpg','_L4A0089.jpg','_L4A0096.jpg','_L4A0107.jpg','_L4A0109.jpg','_L4A9906.jpg','_L4A9909.jpg','_L4A9919.jpg','_L4A9924.jpg','_L4A9928.jpg','_L4A9937.jpg','_L4A9940.jpg','_L4A9942.jpg','_L4A9944.jpg','_L4A9953.jpg','_L4A9956.jpg','_L4A9958.jpg','_L4A9961.jpg','_L4A9963.jpg','_L4A9966.jpg','_L4A9971.jpg','_L4A9974.jpg','_L4A9976.jpg','_L4A9987.jpg'],
+					'Reception': ['_L4A1436.jpg','_L4A1440.jpg','_L4A1476.jpg','_L4A1483.jpg','_L4A1485.jpg','_L4A1487.jpg','_L4A1489.jpg','_L4A1494.jpg','_L4A1504.jpg','_L4A1511.jpg','_L4A1519.jpg','_L4A1537.jpg','_L4A1549.jpg','_L4A1553-2.jpg','_L4A1553.jpg','_L4A1556.jpg','_L4A1588.jpg','_L4A1591.jpg','_L4A1631.jpg','_L4A1637.jpg','_L4A1638.jpg','_L4A1643-2.jpg','_L4A1643.jpg','_L4A1651.jpg','_L4A1671.jpg','_L4A1686.jpg','_L4A1708-2.jpg','_L4A1708.jpg','_L4A1713.jpg','_L4A1716.jpg','_L4A1722.jpg','_L4A1728.jpg','_L4A1750.jpg','_L4A1764.jpg','_L4A1770.jpg','_L4A1772.jpg','_L4A1773.jpg','_L4A1775-2.jpg','_L4A1775.jpg','_L4A1778.jpg','_L4A1781.jpg','_L4A1785.jpg','_L4A1787.jpg','_L4A1793.jpg','_L4A1796.jpg','_L4A1800.jpg','_L4A1802.jpg','_L4A1806.jpg','_L4A1809.jpg','_L4A1813.jpg','_L4A1819.jpg','_L4A1826.jpg','_L4A1847.jpg','_L4A1848.jpg','_L4A1859.jpg','_L4A1862.jpg','_L4A1868.jpg','_L4A1983.jpg','_L4A1985.jpg','_L4A1990.jpg','_L4A1992.jpg','_L4A1995.jpg','_L4A1997.jpg','_L4A2000.jpg','_L4A2006.jpg','_L4A2008.jpg','_L4A2029.jpg','_L4A2048.jpg','_L4A2053.jpg','_L4A2058.jpg','_L4A2059.jpg','_L4A2061.jpg','_L4A2063.jpg','_L4A2066.jpg','_L4A2068.jpg','_L4A2076.jpg','_L4A2082.jpg','_L4A2085.jpg','_L4A2086.jpg','_L4A2096.jpg','_L4A2116.jpg','_L4A2127.jpg','_L4A2132.jpg','_L4A2136.jpg','_L4A2145.jpg','_L4A2148.jpg','_L4A2151.jpg','_L4A2154.jpg','_L4A2159.jpg','_L4A2161.jpg','_L4A2164.jpg','_L4A2167.jpg','_L4A2168-2.jpg','_L4A2168.jpg','_L4A2169.jpg','_L4A2189.jpg','_L4A2190-2.jpg','_L4A2190.jpg','_L4A2200.jpg','_L4A2214.jpg','_L4A2215.jpg','_L4A2236.jpg','_L4A2239.jpg','_L4A2242.jpg','_L4A2245.jpg','_L4A2247.jpg','_L4A2249.jpg','_L4A2257.jpg','_L4A2260.jpg','_L4A2261.jpg','_L4A2262.jpg','_L4A2265.jpg','_L4A2267.jpg','_L4A2269.jpg','_L4A2271.jpg','_L4A2275.jpg','_L4A2279.jpg','_L4A2288.jpg','_L4A2290.jpg','_L4A2294.jpg','_L4A2297.jpg','_L4A2300.jpg','_L4A2302.jpg','_L4A2303.jpg','_L4A2304.jpg','_L4A2315.jpg','_L4A2324.jpg','_L4A2331.jpg','_L4A2335.jpg','_L4A2338.jpg','_L4A2344.jpg','_L4A2358.jpg','_L4A2362-2.jpg','_L4A2362.jpg','_L4A2363.jpg','_L4A2364.jpg','_L4A2367.jpg','_L4A2368.jpg','_L4A2370.jpg','_L4A2375.jpg','_L4A2379.jpg','_L4A2383.jpg','_L4A2384.jpg','_L4A2390.jpg','_L4A2409.jpg','_L4A2413.jpg','_L4A2419.jpg','_L4A2420.jpg','_L4A2421.jpg','_L4A2435.jpg','_L4A2485.jpg','_L4A2488-2.jpg','_L4A2488.jpg','_L4A2493.jpg','_L4A2496.jpg','_L4A2500.jpg','_L4A2504-2.jpg','_L4A2504.jpg','_L4A2506.jpg','_L4A2508-2.jpg','_L4A2508.jpg','_L4A2510.jpg','_L4A2512-2.jpg','_L4A2512.jpg','_L4A2514.jpg','_L4A2528.jpg','_L4A2532.jpg','_L4A2533.jpg','_L4A2534.jpg','_L4A2538-2.jpg','_L4A2538.jpg','_L4A2546-2.jpg','_L4A2546.jpg','8A6A4585.jpg','8A6A4587.jpg','8A6A4589.jpg','8A6A4604.jpg','8A6A4622.jpg','8A6A4623-2.jpg','8A6A4623.jpg','8A6A4624.jpg','8A6A4626-2.jpg','8A6A4626.jpg','8A6A4635.jpg','8A6A4643.jpg','8A6A4648.jpg','8A6A4655.jpg','8A6A4667.jpg','8A6A4669.jpg','8A6A4676.jpg','8A6A4688.jpg','8A6A4692.jpg','8A6A4693.jpg','8A6A4697.jpg','8A6A4703.jpg','8A6A4707-2.jpg','8A6A4707.jpg','8A6A4711.jpg','8A6A4713.jpg','8A6A4717.jpg','8A6A4727.jpg','8A6A4730.jpg','8A6A4745.jpg','8A6A4746-2.jpg','8A6A4746.jpg','8A6A4748.jpg','8A6A4758.jpg','8A6A4760.jpg','8A6A4765.jpg','8A6A4768.jpg','8A6A4771.jpg','8A6A4774.jpg','8A6A4785.jpg','8A6A4792.jpg','8A6A4805.jpg','8A6A4814.jpg','8A6A4818.jpg','8A6A4819.jpg','8A6A4832.jpg','8A6A4839.jpg','8A6A4840-2.jpg','8A6A4840.jpg','8A6A4841.jpg','8A6A4843.jpg','8A6A4849-2.jpg','8A6A4849.jpg','8A6A4850.jpg','8A6A4852.jpg','8A6A4853.jpg','8A6A4854.jpg','8A6A4856.jpg','8A6A4857.jpg','8A6A4863.jpg','8A6A4865.jpg','8A6A4872.jpg','8A6A4902.jpg','8A6A4906.jpg','8A6A4908.jpg','8A6A4913.jpg','8A6A4916.jpg','8A6A4920.jpg','8A6A4922.jpg','8A6A4930.jpg','8A6A4933.jpg','8A6A4939.jpg','8A6A4941.jpg','8A6A4943.jpg','8A6A4946.jpg','8A6A4948.jpg','8A6A4951.jpg','8A6A4957.jpg','8A6A4959.jpg','8A6A4969.jpg','8A6A4976.jpg','8A6A4983.jpg','8A6A4984.jpg','8A6A4987.jpg','8A6A4996.jpg','8A6A4997.jpg','8A6A4998.jpg','8A6A4999.jpg','8A6A5001.jpg','8A6A5002.jpg','8A6A5004.jpg','8A6A5006.jpg','8A6A5010.jpg','8A6A5013.jpg','8A6A5015.jpg','8A6A5018.jpg','8A6A5020.jpg','8A6A5022.jpg','8A6A5023.jpg','8A6A5024.jpg','8A6A5026.jpg','8A6A5029.jpg','8A6A5034.jpg','8A6A5036.jpg','8A6A5039.jpg','8A6A5043.jpg','8A6A5044.jpg','8A6A5047.jpg','8A6A5049.jpg','8A6A5052.jpg','8A6A5054.jpg','8A6A5058.jpg','8A6A5061.jpg','8A6A5064.jpg','8A6A5066.jpg','8A6A5067.jpg','8A6A5071.jpg','8A6A5073.jpg','8A6A5076.jpg','8A6A5077.jpg','8A6A5080.jpg','8A6A5082.jpg','8A6A5084.jpg','8A6A5086.jpg','8A6A5088.jpg','8A6A5092.jpg','8A6A5094.jpg','8A6A5096.jpg','8A6A5099.jpg','8A6A5103.jpg','8A6A5107.jpg','8A6A5110.jpg','8A6A5111.jpg','8A6A5122.jpg','8A6A5124.jpg','8A6A5126.jpg','8A6A5135.jpg','8A6A5143.jpg','8A6A5146.jpg','8A6A5149-2.jpg','8A6A5149.jpg','8A6A5153.jpg','8A6A5154.jpg','8A6A5155.jpg','8A6A5158.jpg','8A6A5161.jpg','8A6A5164.jpg','8A6A5167.jpg','8A6A5169.jpg','8A6A5173.jpg','8A6A5176.jpg','8A6A5179.jpg','8A6A5182.jpg','8A6A5183.jpg','8A6A5185.jpg','8A6A5188.jpg','8A6A5190.jpg','8A6A5198.jpg','8A6A5206.jpg','8A6A5210.jpg','8A6A5215.jpg','8A6A5216.jpg','8A6A5223.jpg','8A6A5233.jpg','8A6A5240.jpg','8A6A5250.jpg','8A6A5252.jpg','8A6A5266.jpg','8A6A5268.jpg','8A6A5281.jpg','8A6A5288.jpg','8A6A5303.jpg','8A6A5307.jpg','8A6A5310.jpg','8A6A5311.jpg','8A6A5312.jpg','8A6A5313.jpg','8A6A5316.jpg','8A6A5320.jpg','8A6A5321.jpg','8A6A5325.jpg','8A6A5330.jpg','8A6A5331.jpg','8A6A5335.jpg','8A6A5336.jpg','8A6A5339.jpg','8A6A5341.jpg','8A6A5344.jpg','8A6A5345.jpg','8A6A5349.jpg','8A6A5359.jpg','8A6A5362-2.jpg','8A6A5362.jpg','8A6A5363.jpg','8A6A5374.jpg','8A6A5376.jpg','8A6A5378.jpg','8A6A5386.jpg','8A6A5389.jpg','8A6A5392.jpg','8A6A5393.jpg','8A6A5395.jpg','8A6A5397.jpg','8A6A5398.jpg','8A6A5401.jpg','8A6A5403.jpg','8A6A5405.jpg','8A6A5406.jpg','8A6A5407.jpg','8A6A5409.jpg','8A6A5413.jpg','8A6A5414.jpg','8A6A5416.jpg','8A6A5417.jpg','8A6A5420.jpg','8A6A5421.jpg','8A6A5425.jpg','8A6A5429.jpg','8A6A5431.jpg','8A6A5432.jpg','8A6A5433-2.jpg','8A6A5433.jpg','8A6A5434.jpg','8A6A5435.jpg','8A6A5436.jpg','8A6A5437.jpg','8A6A5438.jpg','8A6A5442.jpg','8A6A5445-2.jpg','8A6A5445.jpg','8A6A5446.jpg','8A6A5448.jpg','8A6A5449-2.jpg','8A6A5449.jpg','8A6A5453.jpg','8A6A5456-2.jpg','8A6A5456.jpg','8A6A5458-2.jpg','8A6A5458.jpg','8A6A5485.jpg','8A6A5491.jpg','8A6A5492.jpg','8A6A5494.jpg','8A6A5497-2.jpg','8A6A5497.jpg'],
+					'The Girls': ['_L4A1171.jpg','8A6A3617.jpg','8A6A3628.jpg','8A6A3634.jpg','8A6A3639.jpg','8A6A3643.jpg','8A6A3657.jpg','8A6A3658.jpg','8A6A3668-2.jpg','8A6A3668.jpg','8A6A3676.jpg','8A6A3679.jpg','8A6A3681.jpg','8A6A3683.jpg','8A6A3689.jpg','8A6A3694.jpg','8A6A3699.jpg','8A6A3702.jpg','8A6A3709.jpg','8A6A3712.jpg','8A6A3714.jpg','8A6A3720.jpg','8A6A3726.jpg','8A6A3729.jpg','8A6A3735.jpg','8A6A3739.jpg','8A6A3742.jpg','8A6A3745.jpg','8A6A3749.jpg','8A6A3752.jpg','8A6A3757.jpg','8A6A3762.jpg','8A6A3765.jpg','8A6A3768.jpg','8A6A3772.jpg','8A6A3776.jpg','8A6A3779.jpg','8A6A3783.jpg','8A6A3788.jpg','8A6A3791.jpg','8A6A3795.jpg','8A6A3799.jpg','8A6A3802.jpg','8A6A3805.jpg','8A6A3813.jpg','8A6A3818.jpg','8A6A3826.jpg','8A6A3832.jpg','8A6A3836.jpg','8A6A3839.jpg','8A6A3842.jpg','8A6A3847.jpg','8A6A3851.jpg','8A6A3857.jpg','8A6A3863.jpg','8A6A3873.jpg','8A6A3876.jpg','8A6A3883.jpg','8A6A3890.jpg','8A6A3892.jpg','8A6A3895.jpg','8A6A3899.jpg','8A6A3901.jpg','8A6A3907.jpg','8A6A3911.jpg','8A6A3914.jpg','8A6A3916-2.jpg','8A6A3916.jpg','8A6A3919.jpg','8A6A3927.jpg','8A6A3933.jpg','8A6A3945.jpg','8A6A3951.jpg','8A6A3955.jpg'],
+					'The Guys': ['_L4A0913.jpg','_L4A0916.jpg','_L4A0922.jpg','_L4A0928.jpg','_L4A0935.jpg','_L4A0940.jpg','_L4A0944.jpg','_L4A0946.jpg','_L4A0950.jpg','_L4A0953.jpg','_L4A0958.jpg','_L4A0961.jpg','_L4A0966.jpg','_L4A0975.jpg','_L4A0978.jpg','_L4A0981.jpg','_L4A0982.jpg','_L4A0990.jpg','_L4A0995.jpg','_L4A0998.jpg','_L4A1001.jpg','_L4A1003.jpg','_L4A1010.jpg','_L4A1014.jpg','_L4A1016.jpg','_L4A1024.jpg','_L4A1030.jpg','_L4A1034.jpg','_L4A1038.jpg','_L4A1041.jpg','_L4A1049.jpg','_L4A1052.jpg','_L4A1056.jpg','_L4A1081.jpg','_L4A1087.jpg','_L4A1091.jpg','_L4A1094.jpg','_L4A1101.jpg','_L4A1102.jpg','_L4A1130.jpg','_L4A1133.jpg','_L4A1139.jpg','_L4A1140.jpg','_L4A1146.jpg','_L4A1149.jpg','_L4A1151.jpg','_L4A1152-2.jpg','_L4A1152.jpg','_L4A1154.jpg','8A6A3483.jpg','8A6A3486.jpg','8A6A3489.jpg'],
+					'Wedding Party': ['8A6A3274.jpg','8A6A3279.jpg','8A6A3287.jpg','8A6A3294.jpg','8A6A3299.jpg','8A6A3303.jpg','8A6A3501.jpg','8A6A3509.jpg','8A6A3518.jpg','8A6A3531.jpg','8A6A3533.jpg','8A6A3537.jpg','8A6A3540.jpg','8A6A3543.jpg','8A6A3558.jpg','8A6A3561.jpg','8A6A3563.jpg','8A6A3573.jpg','8A6A3575.jpg','8A6A3578.jpg','8A6A3580-2.jpg','8A6A3580.jpg','8A6A3582.jpg','8A6A3589.jpg','8A6A3593.jpg','8A6A3595.jpg','8A6A3597.jpg','8A6A3599.jpg','8A6A3602-2.jpg','8A6A3602.jpg']
+				},
+				selectedGroup: ''
+			}"
+		>
+			<template x-if="selectedGroup.length > 0">
+				<div class="flex flex-row gap-x-2 overflow-x-scroll">
+					<template x-for="imageGroup in Object.keys(imageGroups)">
+						<button
+							class="rounded py-6 px-14 grow text-3xl font-bold text-white bg-cover bg-center border-4"
+							x-on:click="selectedGroup = imageGroup"
+							x-text="imageGroup"
+							x-bind:style="{
+								backgroundImage: 'url(\'img/' + imageGroup + '/' + imageGroups[imageGroup][0] + '\')',
+								borderColor: selectedGroup == imageGroup ? 'black' : 'white',
+								textShadow: '0px 0px 5px black'
+							}"
+						></button>
+					</template>
+				</div>
+			</template>
 
-			<div
-				class="fixed bg-emerald-900/75 w-screen h-screen z-10 backdrop-blur-lg pt-16 pb-24 flex flex-col justify-around"
-				x-show="isOpen"
-				x-transition:enter.duration.250ms
-				x-transition:leave.duration.250ms
-			>
-				<template x-for="link in links">
-					<span class="text-center">
-						<a
-							@click="isOpen = false"
-							class="font-serif font-bold text-white text-4xl py-8 text-center hover:underline"
-							x-bind:href="link.anchor"
-							x-html="link.title"
-						></a>
-						<i
-							class="relative bottom-4 fa-external-link fa-solid text-white"
-							x-show="link.external"
-						></i>
+			<template x-if="selectedGroup.length == 0">
+				<div class="grid grid-cols-1 gap-2">
+					<template x-for="imageGroup in Object.keys(imageGroups)">
+						<button
+							class="rounded py-8 px-12 grow text-3xl font-bold text-white bg-cover bg-center"
+							x-on:click="selectedGroup = imageGroup"
+							x-text="imageGroup"
+							x-bind:style="{
+								backgroundImage: 'url(\'img/' + imageGroup + '/' + imageGroups[imageGroup][0] + '\')',
+								textShadow: '0px 0px 5px black'
+							}"
+						></button>
+					</template>
+				</div>
+			</template>
+
+			<div x-show="selectedGroup.length > 0">
+				<div class="flex items-center sticky top-0 bg-white py-8">
+					<span
+						x-on:click="selectedGroup = ''"
+						class="align-middle p-4 cursor-pointer"
+					>
+						<i class="fa-solid fa-arrow-left fa-xl"></i>
 					</span>
-				</template>
-			</div>
-		</nav>
-
-		<header
-			id="hero"
-			class="py-20 px-6"
-		>
-			<div class="max-w-screen-lg mx-auto">
-				<div class="grid gap-16">
-					<div class="text-center text-3xl font-serif font-extralight">
-						<p>Celebrating</p>
-						<h1 class="font-cursive text-7xl mt-5 relative text-lime-900">Antonio</h1>
-						<p>and</p>
-						<h1 class="font-cursive text-7xl mb-5 relative text-lime-900">Lizzie</h1>
-						<p>April 6, 2024</p>
-
-						<div class="grid gap-4 mt-12 grid-cols-1 md:grid-cols-2">
-							<a href="https://zola.com/wedding/louisianasaturdaynight/rsvp">
-								<p class="py-4 bg-lime-900 hover:bg-lime-800 transition-colors text-white border-4 border-lime-900 hover:border-lime-800 font-bold rounded">RSVP</p>
-							</a>
-
-							<a href="https://zola.com/registry/louisianasaturdaynight">
-								<p class="py-4 transition-colors font-bold text-lime-900 hover:text-lime-800 border-4 border-lime-900 hover:border-lime-800 rounded">Our Registry</p>
-							</a>
-						</div>
-					</div>
-
-					<div x-data="{
-						activeImageIndex: 0,
-						images: [
-							'3F5A4049.jpg',
-							'3F5A3861.jpg',
-							'3F5A3684.jpg',
-							'3F5A3813.jpg',
-							'3F5A4249.jpg',
-							'8A6A3249.jpg'
-						]
-					}">
-						<template x-for="(image, index) in images">
-							<img
-								class="w-full max-w-md mx-auto rounded"
-								loading="eager"
-								x-bind:src="'img/featured/' + image"
-								x-show="index == activeImageIndex"
-								x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
-								x-swipe:right="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
-								x-transition:enter.duration.500ms
-							/>
-						</template>
-
-						<div class="mt-4 flex flex-row justify-center content-center">
-							<span
-								@click="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
-								class="p-2 mx-2 cursor-pointer"
-							>
-								<i class="fa-solid fa-chevron-left fa-xl"></i>
-							</span>
-							<template x-for="(image, index) in images">
-								<span
-									@click="activeImageIndex = index"
-									class="p-2 cursor-pointer"
-								>
-									<i
-										class="fa-circle fa-md"
-										x-bind:class="index == activeImageIndex ? 'fa-solid text-lime-900' : 'fa-regular'"
-									></i>
-								</span>
-							</template>
-
-							<span
-								@click="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
-								class="p-2 mx-2 cursor-pointer"
-							>
-								<i class="fa-solid fa-chevron-right fa-xl"></i>
-							</span>
-						</div>
-					</div>
+					<h1
+						class="inline-block text-4xl font-bold"
+						x-text="selectedGroup"
+					></h1>
 				</div>
-			</div>
-		</header>
 
-		<section
-			id="story"
-			class="py-20 px-6 bg-rose-50"
-		>
-			<div class="max-w-screen-lg mx-auto">
-				<h1 class="mb-12 text-center text-4xl font-serif font-light">Our Story</h1>
-				<div class="grid gap-8">
-					<p class="text-justify tracking-wide font-sans text-neutral-900">
-						Antonio and Lizzie first met at the very end of December, 2021. They were both in the wedding of their good friends, Madeleine and Ben Heyob. After briefly chatting at the rehearsal dinner, they really got to know each other when Antonio asked Lizzie to dance at the reception. They talked all evening, and Antonio invited Lizzie to his New Year's party the next day. After enjoying Antonio's jambalaya, they walked to Bayou St. John to see the fireworks. Antonio and Lizzie stayed up late as they walked along the bayou, talking as though they'd known each other a long time.
-					</p>
-					<div x-data="{
-						activeImageIndex: 0,
-						images: [
-							'IMG_9254.jpeg',
-							'IMG_9242.jpeg',
-							'IMG_9255.jpeg',
-							'IMG_9230.jpeg',
-							'IMG_9257.jpeg',
-							'IMG_9227.jpeg',
-							'IMG_9239.jpeg'
-						]
-					}">
-						<template x-for="(image, index) in images">
-							<img
-								class="w-full max-w-md mx-auto rounded h-80 object-contain bg-gray-200"
-								loading="lazy"
-								x-bind:src="'img/slideshow/' + image"
-								x-show="index == activeImageIndex"
-								x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
-								x-swipe:right="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
-								x-transition:enter.duration.500ms
-							/>
-						</template>
-
-						<div class="mt-4 flex flex-row justify-center content-center">
-							<span
-								@click="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
-								class="p-2 mx-2 cursor-pointer"
-							>
-								<i class="fa-solid fa-chevron-left fa-xl"></i>
-							</span>
-
-							<template x-for="(image, index) in images">
-								<span
-									@click="activeImageIndex = index"
-									class="p-2 cursor-pointer"
-								>
-									<i
-										class="fa-circle fa-md"
-										x-bind:class="index == activeImageIndex ? 'fa-solid text-lime-900' : 'fa-regular'"
-									></i>
-								</span>
-							</template>
-
-							<span
-								@click="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
-								class="p-2 mx-2 cursor-pointer"
-							>
-								<i class="fa-solid fa-chevron-right fa-xl"></i>
-							</span>
-						</div>
-					</div>
-					<p class="text-justify tracking-wide font-sans text-neutral-900">
-						In the new year Lizzie drove back to Houston, where Lizzie was living and teaching world history at Cristo Rey Jesuit High School. As she was driving, she thought that meeting Antonio was fun and romantic, but that the relationship wouldn't go anywhere because he lived in New Orleans, and she was in Houston. However, Antonio surprised her by calling as she drove home and kept her company for the five hour drive. After that, Antonio just kept calling, and they continued to get to know each other through facetime dates. They visited each other multiple times. In New Orleans they went to Mardi Gras and biked through Audubon Park. In Houston, they visited NASA and Antonio met Lizzie's cats, Gilbert and Lewis, who he loved right away. (Antonio loved the cats so much that he has been getting allergy shots for about a year. They are working!)
-					</p>
-					<div x-data="{
-						activeImageIndex: 0,
-						images: [
-							'IMG_9234.jpeg',
-							'IMG_9245.jpeg',
-							'IMG_9262.jpeg',
-							'IMG_9238.jpeg',
-							'IMG_9266.jpeg',
-							'IMG_9228.jpeg',
-							'IMG_9226.jpeg'
-						]
-					}">
-						<template x-for="(image, index) in images">
-							<img
-								class="w-full max-w-md mx-auto rounded h-80 object-contain bg-gray-200"
-								loading="lazy"
-								x-bind:src="'img/slideshow/' + image"
-								x-show="index == activeImageIndex"
-								x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
-								x-swipe:right="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
-								x-transition:enter.duration.500ms
-							/>
-						</template>
-
-						<div class="mt-4 flex flex-row justify-center content-center">
-							<span
-								@click="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
-								class="p-2 mx-2 cursor-pointer"
-							>
-								<i class="fa-solid fa-chevron-left fa-xl"></i>
-							</span>
-
-							<template x-for="(image, index) in images">
-								<span
-									@click="activeImageIndex = index"
-									class="p-2 cursor-pointer"
-								>
-									<i
-										class="fa-circle fa-md"
-										x-bind:class="index == activeImageIndex ? 'fa-solid text-lime-900' : 'fa-regular'"
-									></i>
-								</span>
-							</template>
-
-							<span
-								@click="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
-								class="p-2 mx-2 cursor-pointer"
-							>
-								<i class="fa-solid fa-chevron-right fa-xl"></i>
-							</span>
-						</div>
-					</div>
-					<p class="text-justify tracking-wide font-sans text-neutral-900">
-						Towards the end of April, Lizzie made the decision to move from Houston to New Orleans. It was difficult to leave, but there was a new adventure awaiting back in her home of Louisiana. After Lizzie moved to New Orleans, Antonio and Lizzie continued to grow in love, grounded in their Catholic faith. About a year later, he proposed on the bridge where they first watched fireworks together on New Year's Eve. It was the perfect beginning to the rest of their lives.
-					</p>
-					<div x-data="{
-						activeImageIndex: 0,
-						images: [
-							'IMG_9246.jpeg',
-							'IMG_9258.jpeg',
-							'IMG_9235.jpeg',
-							'IMG_9265.jpeg',
-							'IMG_9248.jpeg',
-							'IMG_9240.jpeg',
-							'IMG_9253.jpeg'
-						]
-					}">
-						<template x-for="(image, index) in images">
-							<img
-								class="w-full max-w-md mx-auto rounded h-80 object-contain bg-gray-200"
-								loading="lazy"
-								x-bind:src="'img/slideshow/' + image"
-								x-show="index == activeImageIndex"
-								x-swipe:left="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
-								x-swipe:right="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
-								x-transition:enter.duration.500ms
-							/>
-						</template>
-
-						<div class="mt-4 flex flex-row justify-center content-center">
-							<span
-								@click="activeImageIndex = activeImageIndex == 0 ? (images.length - 1) : activeImageIndex - 1"
-								class="p-2 mx-2 cursor-pointer"
-							>
-								<i class="fa-solid fa-chevron-left fa-xl"></i>
-							</span>
-
-							<template x-for="(image, index) in images">
-								<span
-									@click="activeImageIndex = index"
-									class="p-2 cursor-pointer"
-								>
-									<i
-										class="fa-circle fa-md"
-										x-bind:class="index == activeImageIndex ? 'fa-solid text-lime-900' : 'fa-regular'"
-									></i>
-								</span>
-							</template>
-
-							<span
-								@click="activeImageIndex = activeImageIndex == (images.length - 1) ? 0 : activeImageIndex + 1"
-								class="p-2 mx-2 cursor-pointer"
-							>
-								<i class="fa-solid fa-chevron-right fa-xl"></i>
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section
-			id="schedule"
-			class="py-20 px-6 bg-white"
-			x-data="{
-				events: [
-					{
-						name: 'Wedding Ceremony',
-						image: 'olom.jpg',
-						icon: 'church',
-						venue: 'Our Lady of Mercy Catholic Church',
-						time: '1:30pm',
-						street: '445 Marquette Ave',
-						city: 'Baton Rouge',
-						state: 'LA',
-						postalCode: '70806',
-						siteLink: 'https://louisianastatemuseum.org/museum/capitol-park-museum',
-						mapLink: 'https://goo.gl/maps/RmnMQ9sBkzHz6Kb17'
-					}, {
-						name: 'Reception',
-						image: 'cpm.jpg',
-						icon: 'building-columns',
-						venue: 'Capital Park Museum',
-						time: '6:00pm',
-						street: '660 N. Fourth Street',
-						city: 'Baton Rouge',
-						state: 'LA',
-						postalCode: '70802',
-						siteLink: 'https://louisianastatemuseum.org/museum/capitol-park-museum',
-						mapLink: 'https://goo.gl/maps/RmnMQ9sBkzHz6Kb17'
-					}
-				]
-			}"
-		>
-			<div class="max-w-screen-md mx-auto">
-				<h1 class="mb-12 text-center text-4xl font-serif font-light">Itinerary</h1>
-				<template x-for="(event, index) in events">
-					<div class="text-center font-serif font-light">
-						<div
-							class="w-px mx-auto my-6 bg-gray-500 h-16"
-							x-show="index > 0"
-						></div>
-						<p
-							class="text-md font-sans text-neutral-900"
-							x-text="'April 6th 2024, ' + event.time"
-						></p>
-						<h2
-							class="text-3xl mt-4"
-							x-text="event.name"
-						></h2>
+				<div class="columns-1 gap-2 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 2xl:columns-6">
+					<template x-for="image in imageGroups[selectedGroup]">
 						<img
-							class="w-full h-32 rounded object-cover my-4"
-							loading="lazy"
-							x-bind:src="'img/' + event.image"
+							class="w-full mb-2 rounded"
+							laoding="lazy"
+							x-bind:src="'img/' + selectedGroup + '/' + image"
 						/>
-						<p
-							class="text-lg"
-							x-text="event.venue"
-						></p>
-						<a class="inline-block px-8 py-4" x-bind:href="event.mapLink">
-							<p
-								class="text-sm underline whitespace-pre tracking-wide font-sans text-neutral-900"
-								x-text="event.street"
-							></p>
-							<p
-								class="text-sm underline whitespace-pre tracking-wide font-sans text-neutral-900"
-								x-text="`${event.city} ${event.state}, ${event.postalCode}`"
-							></p>
-						</a>
-					</div>
-				</template>
-				<a href="https://zola.com/wedding/louisianasaturdaynight/rsvp">
-					<p class="text-center text-3xl font-serif mt-8 py-4 bg-lime-900 hover:bg-lime-800 transition-colors text-white border-4 border-lime-900 hover:border-lime-800 font-bold rounded">RSVP</p>
-				</a>
-			</div>
-		</section>
-
-		<section
-			id="attire"
-			class="py-20 px-6 bg-rose-100"
-		>
-			<div class="max-w-screen-md mx-auto">
-				<h1 class="mb-12 text-center text-4xl font-serif font-light">Attire</h1>
-
-				<h2 class="text-3xl mt-4 text-center font-serif font-light mb-4">Men</h2>
-				<p class="text-justify tracking-wider font-serif text-gray-700 mb-8">
-					Well-fitted suits and dress shirts in classic colors. Optional accessories like ties and cufflinks.
-				</p>
-
-				<h2 class="text-3xl mt-4 text-center font-serif font-light mb-4">Women</h2>
-				<p class="text-justify tracking-wider font-serif text-gray-700 mb-8">
-					Cocktail dresses and separates like skirts or pants with dressy tops. Optional accessories like earrings or clutches.
-				</p>
-			</div>
-		</section>
-
-		<section
-			id="accommodations"
-			class="py-20 px-6 bg-rose-50"
-		>
-			<div class="max-w-screen-lg mx-auto">
-				<h1 class="mb-12 text-center text-4xl font-serif font-light">Travel and Accommodations</h1>
-
-				<h2 class="text-3xl mt-4 text-center font-serif font-light mb-4">Flying</h2>
-				<p class="text-justify tracking-wider font-serif text-gray-700 mb-8">
-					We recommend flying into the Baton Rouge airport (BTR). There are very few direct flights, but connections are mostly from cities like Dallas, Washington D.C., Houston, and Atlanta. You could also fly into New Orleans (MSY), but it is at least an hour drive from New Orleans to Baton Rouge.
-				</p>
-
-				<h2 class="text-3xl mt-4 text-center font-serif font-light mb-4">Driving</h2>
-				<p class="text-justify tracking-wider font-serif text-gray-700 mb-8">
-					We recommend renting a car or using a ride-share service to get around Baton Rouge. The hotel we reserved blocks at is in downtown Baton Rouge, which is about three and a half blocks from the reception. Our Lady of Mercy is about a fifteen minute drive from downtown Baton Rouge.
-				</p>
-
-				<h2 class="text-3xl mt-4 text-center font-serif font-light mb-4">Lodging</h2>
-				<p class="text-justify tracking-wider font-serif text-gray-700 mb-8">
-					We have reserved a hotel block at the Courtyard Marriott on Third Street. It is about a three and a half block walk to the reception venue.
-				</p>
-				<a href="https://www.marriott.com/events/start.mi?id=1700585844906&key=GRP">
-					<p class="text-center text-xl font-serif mt-8 py-4 bg-black hover:bg-neutral-900 transition-colors text-white font-bold rounded">Reserve Marriott Hotel Block</p>
-				</a>
-				<p class="text-justify tracking-wider font-serif text-gray-700 my-8">
-					We will add more rooms as needed. If there are no more rooms available from this link please quickly let us know so that we may reserve more.
-				</p>
-			</div>
-		</section>
-
-		<section
-			id="activities"
-			class="py-20 px-6"
-			x-data="{
-				activities: [
-					{
-						name: 'Tiger Stadium',
-						description: 'Check out the stately oaks, broad magnolias and azaleas on LSU\'s campus. You can also stop by and say hi to Mike the Tiger.'
-					}, {
-						name: 'USS Kidd Veterans Museum',
-						description: 'We walked by this ship on our first date while exploring the levee of Baton Rouge.'
-					}, {
-						name: 'Louisiana State Capitol',
-						description: 'New and/or old! Both are in downtown Baton Rouge. You can explore Louisiana\'s fascinating political past and present.'
-					}, {
-						name: 'Red Stick Spice',
-						description: 'A cooking & tea store that makes their own spice blends; right by Our Lady of Mercy'
-					}, {
-						name: 'Farmer\'s Market',
-						description: 'Saturday mornings there is a farmer\'s market in downtown Baton Rouge.'
-					}, {
-						name: 'Government Street',
-						description: 'This is the street that connects Our Lady of Mercy to downtown Baton Rouge. It\'s been up and coming the past ten years, and there are a lot of cool restaurants and shops to check out!'
-					}
-				],
-				restaurants: [
-					{
-						name: 'Tsunami\'s',
-						price: '$$$',
-						description: 'Sushi restaurant on the rooftop of the Shaw Tower that overlooks the Mississippi River.'
-					}, {
-						name: 'Schlittz and Giggles',
-						price: '$$',
-						description: 'Pizza, salad, and wraps.'
-					}, {
-						name: 'The Vintage',
-						price: '$',
-						description: 'Beignets, breakfast, sandwiches, and coffee.'
-					}, {
-						name: 'City Pork',
-						price: '$$$',
-						description: 'Louisiana cuisine and smoked meat. There are two locations to try.'
-					}, {
-						name: 'Jed\'s',
-						price: '$$',
-						description: 'Louisiana cuisine and really good poboys.'
-					}, {
-						name: 'The Chimes',
-						price: '$$',
-						description: 'On LSU\'s campus, rooftop bar, great atmosphere, Louisiana cuisine.'
-					}, {
-						name: 'Reginelli\'s',
-						price: '$$',
-						description: 'Pizza and also near Our Lady of Mercy.'
-					}, {
-						name: 'Louie\'s',
-						price: '$',
-						description: '24/7 diner on LSU\'s campus; their hash browns are amazing.'
-					}, {
-						name: 'Anthony\'s Deli',
-						price: '$',
-						description: 'sandwiches and pasta; closes at 6pm; right by Our Lady of Mercy.'
-					}, {
-						name: 'MJ\'s Cafe',
-						price: '$',
-						description: 'Vegan breakfast & lunch; plant-based soups, wraps, and sandwiches.'
-					}
-				]
-			}"
-		>
-			<div class="max-w-screen-md mx-auto">
-				<h1 class="mb-12 text-center text-4xl font-serif font-light">Things to Do</h1>
-
-				<div class="border-2 border-lime-800 p-12 rounded">
-					<h2 class="text-3xl text-center font-serif font-light mb-4">Restaurants</h2>
-					<template x-for="(restaurant, index) in restaurants">
-						<div class="text-center mt-6">
-							<p
-								class="text-md font-sans text-neutral-500"
-								x-text="restaurant.price"
-							></p>
-							<h3
-								class="text-lg font-serif mb-2"
-								x-text="restaurant.name"
-							></h3>
-							<p class="text-sm" x-text="restaurant.description"></p>
-						</div>
-					</template>
-				</div>
-
-				<div class="border-2 border-lime-800 p-12 rounded mt-12">
-					<h2 class="text-3xl text-center font-serif font-light mb-4">Points of Interest</h2>
-					<template x-for="(activity, index) in activities">
-						<div class="text-center mt-6">
-							<h3
-								class="text-lg font-serif mb-2"
-								x-text="activity.name"
-							></h3>
-							<p class="text-sm" x-text="activity.description"></p>
-						</div>
 					</template>
 				</div>
 			</div>
-		</section>
+		</div>
 	</body>
 </html>
