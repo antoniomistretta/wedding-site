@@ -63,7 +63,7 @@
 			</template>
 
 			<template x-if="selectedGroup.length == 0">
-				<div class="grid grid-cols-1 gap-2">
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
 					<template x-for="imageGroup in Object.keys(imageGroups)">
 						<button
 							class="rounded py-8 px-12 grow text-3xl font-bold text-white bg-cover bg-center"
